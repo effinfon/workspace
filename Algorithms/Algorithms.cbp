@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Algorithms" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Algorithms" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Algorithms" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=gnu++17" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Linker>
+			<Add library="benchmark" />
+			<Add library="pthread" />
+		</Linker>
+		<Unit filename="Animation.hpp" />
+		<Unit filename="BigUint.hpp" />
+		<Unit filename="BinarySearch.hpp" />
+		<Unit filename="Bitmap.hpp" />
+		<Unit filename="Blur.hpp" />
+		<Unit filename="BookNotes" />
+		<Unit filename="CollectionTypes.hpp" />
+		<Unit filename="CommandLineArguments.hpp" />
+		<Unit filename="CommonComplications" />
+		<Unit filename="CompilingTracking.hpp" />
+		<Unit filename="ComputationalCurves_Shapes.hpp" />
+		<Unit filename="CountProblems.hpp" />
+		<Unit filename="ExtendedUint.hpp" />
+		<Unit filename="FibonnaciSearch.hpp" />
+		<Unit filename="FileIO.hpp" />
+		<Unit filename="Filesystem.hpp" />
+		<Unit filename="Formatting.hpp" />
+		<Unit filename="Graph.hpp" />
+		<Unit filename="GraphAlgorithms.hpp" />
+		<Unit filename="HackerRank.hpp" />
+		<Unit filename="InsertionSort.hpp" />
+		<Unit filename="IteratorStateMachine.hpp" />
+		<Unit filename="Linearity.hpp" />
+		<Unit filename="LinkedList.hpp" />
+		<Unit filename="Linux.hpp" />
+		<Unit filename="Maze.hpp" />
+		<Unit filename="MemoryAllocator.hpp" />
+		<Unit filename="Pbinfo.hpp" />
+		<Unit filename="Polynomial.hpp" />
+		<Unit filename="PolynomialsHeterogeneous.hpp" />
+		<Unit filename="PolynomialsHomogeneous.hpp" />
+		<Unit filename="PrimalityTest.hpp" />
+		<Unit filename="Problems.hpp" />
+		<Unit filename="RandomInputGenerator.hpp" />
+		<Unit filename="RawArray.hpp" />
+		<Unit filename="RingBuffer.hpp" />
+		<Unit filename="Search.hpp" />
+		<Unit filename="Sort.hpp" />
+		<Unit filename="SortingBenchmark.hpp" />
+		<Unit filename="StringProcessing.hpp" />
+		<Unit filename="Test.hpp" />
+		<Unit filename="TestRingBuffer.hpp" />
+		<Unit filename="ThreadPool.hpp" />
+		<Unit filename="TreeDTS.hpp" />
+		<Unit filename="TypeMacro.hpp" />
+		<Unit filename="TypedArray.hpp" />
+		<Unit filename="Utilitary.hpp" />
+		<Unit filename="VascularNetworks.hpp" />
+		<Unit filename="main.cpp" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

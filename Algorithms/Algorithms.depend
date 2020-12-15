@@ -1,0 +1,115 @@
+# depslib dependency file v1.0
+1608065403 source:/home/nq/codeblocks/Algorithms/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<filesystem>
+	"BinarySearch.hpp"
+	"FibonnaciSearch.hpp"
+	"Sort.hpp"
+	"CountProblems.hpp"
+	"Formatting.hpp"
+	"Linux.hpp"
+	"Bitmap.hpp"
+	"Blur.hpp"
+	"Polynomial.hpp"
+	"FileIO.hpp"
+	"CollectionTypes.hpp"
+
+1606724381 /home/nq/codeblocks/Algorithms/RingBuffer.h
+	<iostream>
+
+1606724948 source:/home/nq/codeblocks/Algorithms/RingBuffer.cpp
+	"RingBuffer.hpp"
+
+1606725959 /home/nq/codeblocks/Algorithms/RingBuffer.hpp
+	<iostream>
+
+1606726765 /home/nq/codeblocks/Algorithms/TestRingBuffer.hpp
+	"RingBuffer.hpp"
+
+1606761345 /home/nq/codeblocks/Algorithms/Maze.hpp
+	<random>
+	<memory>
+	<vector>
+	<set>
+	<random>
+
+1606809003 /home/nq/codeblocks/Algorithms/InsertionSort.hpp
+	<type_traits>
+
+1606819965 /home/nq/codeblocks/Algorithms/RandomInputGenerator.hpp
+	<random>
+	<memory>
+	<iostream>
+	<bitset>
+
+1607261318 /home/nq/codeblocks/Algorithms/TypedArray.hpp
+	"Utilitary.hpp"
+
+1607261185 /home/nq/codeblocks/Algorithms/Utilitary.hpp
+	"TypeMacro.hpp"
+
+1607261408 /home/nq/codeblocks/Algorithms/TypeMacro.hpp
+
+1607445475 /home/nq/codeblocks/Algorithms/ThreadPool.hpp
+	<iostream>
+	<boost/thread.hpp>
+
+1607631530 /home/nq/codeblocks/Algorithms/StringProcessing.hpp
+	<string>
+	<vector>
+
+1607611281 /home/nq/codeblocks/Algorithms/Test.hpp
+	"StringProcessing.hpp"
+	"Sort.hpp"
+	"RawArray.hpp"
+	"PrimalityTest.hpp"
+	"LinkedList.hpp"
+
+1608042042 /home/nq/codeblocks/Algorithms/Sort.hpp
+
+1607611298 /home/nq/codeblocks/Algorithms/PrimalityTest.hpp
+
+1607554048 /home/nq/codeblocks/Algorithms/RawArray.hpp
+
+1607611115 /home/nq/codeblocks/Algorithms/LinkedList.hpp
+
+1607633824 /home/nq/codeblocks/Algorithms/BigUint.hpp
+	<limits.h>
+
+1607709268 /home/nq/codeblocks/Algorithms/Pbinfo.hpp
+
+1608046406 /home/nq/codeblocks/Algorithms/BinarySearch.hpp
+	"Search.hpp"
+
+1608047192 /home/nq/codeblocks/Algorithms/Search.hpp
+
+1608050166 /home/nq/codeblocks/Algorithms/FibonnaciSearch.hpp
+	"Search.hpp"
+
+1608047993 /home/nq/codeblocks/Algorithms/CountProblems.hpp
+
+1608050949 /home/nq/codeblocks/Algorithms/Formatting.hpp
+	<string>
+
+1608059376 /home/nq/codeblocks/Algorithms/Linux.hpp
+	<string>
+	<filesystem>
+
+1608062247 /home/nq/codeblocks/Algorithms/Bitmap.hpp
+
+1608061935 /home/nq/codeblocks/Algorithms/Blur.hpp
+	"Bitmap.hpp"
+
+1608066338 /home/nq/codeblocks/Algorithms/Polynomial.hpp
+	"FileIO.hpp"
+
+1608066327 /home/nq/codeblocks/Algorithms/FileIO.hpp
+	<string>
+	<filesystem>
+	<fstream>
+	"CollectionTypes.hpp"
+
+1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
+

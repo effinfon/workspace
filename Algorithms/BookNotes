@@ -1,0 +1,80 @@
+/// Introduction to Algorithms, 3rd edition (2009 MIT)
+skipped Chapter 1 for now:
+    maybe devise something that identifies algorithms
+Chapter 2:
+    sort n elements (comparison model)
+skipped Chapter 3 for now:
+    maybe devise a simulator of complexity and performance of a code, based on IO, cache size, data moves, operations, etc.
+Chapter 4:
+    further divide and conquer algorithms
+Chapter 5:
+    probabilistic algorithms
+Appendix A:
+Appendix B:
+Appendix C:
+Appendix D:
+
+/// Algorithms in C (1990, Robert Sedgewick)
+Quotes kind 1:
+    "In the text, a program may be referenced directly for its text, in which case it is run through a formatting filter; or indirectly (through a figure file) for its output, in which case it is executed and its output directed to imaging software that draws a figure. During debugging, the program output was usually simplified, as described below, though sometimes bugs were easiest to see in the figures themselves"
+    "The interface between the programs and the imaging software is a high-level one modeled on the method developed by Marc Brown and the author for an interactive system to provide dynamic views of algorithms in execution for educational and other applications." (it could help greatly in even design - prototype - develop, in analysing its correctness and complexity and logic structure, in formalizing it, in debugging it, in automating its behaviour analysis or further design of algorithms, in finding similar algorithms, in training an AI to understand the algorithmic structure, in computing "distances" between algorithmic structures, etc.)
+    "The algorithms are instrumented to produce `interesting events` at important points during execution that provide information about changes in underlying data structures. Associated with each figure is a program called a `view` that reacts to interesting events and produces descriptions to be used to produce several different figures, since different views can react differently to the same set of interesting events. (In particular, debugging views that trace the progress of an algorithm are simple to build)"
+    "The procedure calls in the algorithm that signal interesting events do not appear in the text because they are filtered out in the formatting step."
+Quotes kind 2:
+    "In some programming environments, it is possible to declare the size of an array at execution time."
+    "In C it is possible to achieve this effect through proper use of the storage allocation mechanism, but it is still a fundamental property of arrays that their sizes are fixed and must be known before they are used (allocated / stack frame formed / memory structure of a module is decided / ??)."
+    (!!?) "Arrays are a fundamental data structure in that they have a direct correspondence with memory systems on virtually all computers."
+    (*?) "Most computer language processors translate programs that involve arrays into rather efficient machine-language programs that access memory directly."
+skipped Chapter 1:
+skipped Chapter 2:
+Chapter 3:
+    some dts (mainly dynamic lists derived, the concept of "dynamic link" by pointer)
+    dynamic list traversal
+    storage alloaction
+Chapter 4:
+    some dts (mainly trees and forests)
+    tree traversal
+Chapter 5:
+    recursion
+    divide and conquer
+    recursion conversion into iteration
+skipped Chapter 6:
+skipped Chapter 7:
+Chapter 8:
+    comparison model-based, nlog(n) sorting [and n^2, but the average is probably still nlog(n)], treating the data "abstractly", sorting algorithms
+    distributed computing, applied to sorting and counting algorithms
+Chapter 9:
+    quicksort
+Chapter 10:
+    linear sorting, not the comparison model, using more knowledge about the data
+    radix sorting
+Chapter 11:
+    heap dts-based algorithms
+    priority queues
+    heap sort
+    indirect heaps
+Chapter 12:
+    merge sort, recursive distributive computing, applied to sorting
+Chapter 13:
+    external sorting
+    sort merge
+    polyphase merge
+Chapter 14:
+    ...
+
+Chapter 19:
+    string search
+    ...
+Chapter 20:
+    pattern matching
+    ...
+
+
+/// Memory Management - Algorithms and Implementations in C/C++ (2003, Bill Blunden)
+Quotes:
+(!!?) "There are some things, like handling processor interrupts, that can only be fleshed out using assembler. This is why mid-level languages, like C, provide syntactic facilities for inline assembly code."
+(?!) "In general, C is about as close to assembly language as you can get without losing the basic flow-control and stack-frame niceties that accompany high-level languages."
+Chapter 1:
+
+
+

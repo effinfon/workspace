@@ -113,3 +113,55 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
+1608066845 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<filesystem>
+	"BinarySearch.hpp"
+	"FibonnaciSearch.hpp"
+	"Sort.hpp"
+	"CountProblems.hpp"
+	"Formatting.hpp"
+	"Linux.hpp"
+	"Bitmap.hpp"
+	"Blur.hpp"
+	"Polynomial.hpp"
+	"FileIO.hpp"
+	"CollectionTypes.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
+	"Search.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Search.hpp
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/FibonnaciSearch.hpp
+	"Search.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Sort.hpp
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/CountProblems.hpp
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Formatting.hpp
+	<string>
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Linux.hpp
+	<string>
+	<filesystem>
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Bitmap.hpp
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Blur.hpp
+	"Bitmap.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/Polynomial.hpp
+	"FileIO.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/FileIO.hpp
+	<string>
+	<filesystem>
+	<fstream>
+	"CollectionTypes.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/CollectionTypes.hpp
+

@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1606680765 source:/home/nq/codeblocks/glfw3/main.cpp
+	<iostream>
+	<pthread.h>
+	<vector>
+	<string>
+	<GL/glew.h>
+	<GLFW/glfw3.h>
+	<SDL2/SDL.h>
+	<glm/glm.hpp>
+	<glm/ext.hpp>
+

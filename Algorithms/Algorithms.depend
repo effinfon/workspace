@@ -113,7 +113,7 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1608066845 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1608120717 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -129,6 +129,8 @@
 	"Polynomial.hpp"
 	"FileIO.hpp"
 	"CollectionTypes.hpp"
+	"OpenGL.hpp"
+	"triangle.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
 	"Search.hpp"
@@ -164,4 +166,24 @@
 	"CollectionTypes.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/CollectionTypes.hpp
+
+1608122286 /home/nq/codeblocks/workspace/Algorithms/OpenGL.hpp
+	<GL/glew.h>
+	<GL/glut.h>
+	<GL/glu.h>
+	<GL/gl.h>
+	<GL/glx.h>
+	<SDL2/SDL.h>
+	<stdio.h>
+
+1608127320 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
+	<cstdlib>
+	<stdio.h>
+	<iostream>
+	"triangle.hpp"
+	<chrono>
+	<GL/glew.h>
+	<SDL2/SDL.h>
+
+1608120622 /home/nq/codeblocks/workspace/Algorithms/triangle.hpp
 

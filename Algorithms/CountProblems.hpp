@@ -1,6 +1,8 @@
 #ifndef COUNTPROBLEMS_HPP_INCLUDED
 #define COUNTPROBLEMS_HPP_INCLUDED
 
+#include <string>
+
 /// TD
 /*
     how many Fibonacci numbers in the uint16_t, uint32_t and uint64_t; basically, how many

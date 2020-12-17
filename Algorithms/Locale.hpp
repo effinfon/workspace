@@ -1,0 +1,6 @@
+#ifndef LOCALE_HPP_INCLUDED
+#define LOCALE_HPP_INCLUDED
+
+/// TD
+
+#endif // LOCALE_HPP_INCLUDED

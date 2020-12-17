@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1608218861 source:/home/nq/codeblocks/workspace/CuratedListAttempts/main.cpp
+	<iostream>
+	"ls.hpp"
+
+1608219146 /home/nq/codeblocks/workspace/CuratedListAttempts/ls.hpp
+	<iostream>
+	<filesystem>
+	<string>
+	<vector>
+

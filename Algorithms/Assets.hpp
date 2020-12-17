@@ -6,10 +6,18 @@
 #include <fstream>
 namespace fs = std::filesystem;
 
+#include "CollectionTypes.hpp"
+#include "NumberTheory.hpp"
+#include <vector>
+
 struct PixelRGB {
-    uint8_t red;
-    uint8_t green;
-    uint8_t blue;
+    uint8_t red {};
+    uint8_t green {};
+    uint8_t blue {};
+
+    PixelRGB() : red(0.0), green(0.0), blue(0.0) {}
+    PixelRGB(uint8_t red, uint8_t green, uint8_t blue) :
+        red(red), green(green), blue(blue) {}
 };
 
 struct Texture {
@@ -23,7 +31,22 @@ struct Texture {
 
 //    PixelRGB operator [][](int x, int y) {}  // will not work on C++, this needs two arguments like C# (?!)
             // as it has a much simpler syntax
+
+            // seg-faults
+/*
+    std::streamsize available(std::ifstream& is ) {
+        std::streampos pos = is.tellg();
+        is.seekg( 0, std::ios::end );
+        std::streamsize len = is.tellg() - pos;
+        is.seekg( pos );
+        return len;
+    }
+*/
+
     void LoadImageBitmap(std::string filepathname) {
+        DynamicArray<PixelRGB> result {};
+        std::vector<PixelRGB> result_vec {};
+
         std::string full_path = fs::current_path();
         if(filepathname[0] != '/') {
             full_path += "/" + filepathname;
@@ -37,28 +60,52 @@ struct Texture {
         if(fileExists) {
             std::ifstream istream {full_path, std::ios_base::binary};
             if(istream.is_open()) {
-/*
-4d42 bef2 0015 0000 0000 008a 0000 007c
-0000 02ee 0000 01db 0000 0001 0020 0003
-0000 be68 0015 0000 0000 0000 0000 0000
-0000 0000 0000 0000 00ff ff00 0000 00ff
-0000 0000 ff00 4742 7352 c280 28f5 b860
-151e 8520 01eb 3340 1333 6680 2666 6640
-0666 99a0 0999 0a3c 03d7 5c24 328f
-*/
-/*
-            std::noskipws();
+
+            // this seems to be the file header, but I am still uncertain up to what
+                // point does the header extend, so I'd like to turn the whole binary
+                // into an image and see what "renders correctly / expectedly"
+//4d42 bef2 0015 0000 0000 008a 0000 007c
+//0000 02ee 0000 01db 0000 0001 0020 0003
+//0000 be68 0015 0000 0000 0000 0000 0000
+//0000 0000 0000 0000 00ff ff00 0000 00ff
+//0000 0000 ff00 4742 7352 c280 28f5 b860
+//151e 8520 01eb 3340 1333 6680 2666 6640
+//0666 99a0 0999 0a3c 03d7 5c24 328f
+            //std::streamsize avail = available(istream);
+            //std::cout << "Available bytes: " << avail;
+
             while (istream) {
                 std::ios::pos_type before = istream.tellg();
-                uint8_t x;
-                istream >> x;
-                std::ios::pos_type after = source.tellg();
-                std::cout << before << ' ' << static_cast<int>(x) << ' '
-                          << after << std::endl;
+                uint8_t r, g, b;
+                istream >> r; if(istream) istream >> g; else std::cout << "Green byte missing.\n";
+                if(istream) istream >> b; else std::cout << "Blue byte missing.\n";
+                // result += PixelRGB(r, g, b); // (!!?) because this doesn't produce hard-copies, I think it seg-faults
+                result_vec.push_back(PixelRGB(r, g, b));    // does it hard-copy by default or why does it not seg-fault ?
+                        // aahh, I guess that DynamicArray<typename> tried to reallocate memory and had to copy things, so
+                        // when it tried to access the temporary variable's pointer / reference it went out of memory access;
+                        // so, does vector hard-copy or just doesn't get to have to reallocate ?
+                // let's force it to access
+                PixelRGB temp_access = result_vec[result_vec.size() - 1];   // works fine, oh well
+                std::ios::pos_type after = istream.tellg();
+                //std::cout << static_cast<int>(r) << ' ';  // for "debugging purposes"
             }
-*/
+
             istream.close();
+            }
+
+        Uint32_t2 num = DecomposeIntoWidthAndHeight_v1(result_vec.size());
+        std::cout << "decompose " << result_vec.size() << " into " << num.x << " and " << num.y << " such that x * y = " << num.x * num.y << "\n";
+        width = num.x;
+        height = num.y;
+        bitmap = new PixelRGB[width * height];
+
+        for(uint16_t idx {0}; idx < width * height; idx++) {
+            bitmap[idx] = result_vec[idx];
         }
+    } else {std::cerr << "File not found or cannot be opened.\n";} }
+
+    void Draw() {
+
     }
 };
 
@@ -155,42 +202,5 @@ struct Quadrilateral {
     }
 };
 
-struct ChessPiece {
-    uint8_t x;
-    uint8_t y;
 
-    // movement procedure
-
-};
-struct ChessPiecePawn : ChessPiece {
-    // init
-    // texture
-    // draw procedure
-};
-struct ChessPieceKing : ChessPiece {};
-struct ChessPieceQueen : ChessPiece {};
-struct ChessPieceBishop : ChessPiece {};
-struct ChessPieceRook : ChessPiece {};
-struct ChessPieceKnight : ChessPiece {};
-
-struct ChessBoard {
-    uint8_t width;
-    uint8_t height;
-    bool zero_zero_isBlack{true};
-
-    void InitGL() {
-        // shaders, program, assets
-    }
-    void Render /*vs Draw */() {    // rendering vs drawing (?!)
-        // clear buffer, draw assets, ...; the buffer swap should occur externally because
-            // there might still be things to draw on top, such as chess pieces
-    }
-};
-struct Chess {
-    ChessBoard board;
-    ChessPiece pieces[];    // at some point, a piece of some derived class can be changed for another; the total number of pieces in a chess game is constant, but the number of pieces on the board at any point of the game can vary (?)
-
-    // initialize board state: graphics / textures, positions of pieces,
-    // bring in / take out ChessPiece procedure
-};
 #endif // ASSETS_HPP_INCLUDED

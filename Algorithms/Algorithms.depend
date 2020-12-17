@@ -113,7 +113,7 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1608211319 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1608229471 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -123,6 +123,7 @@
 	"Sort.hpp"
 	"CountProblems.hpp"
 	"Formatting.hpp"
+	"StringProcessing.hpp"
 	"Linux.hpp"
 	"Bitmap.hpp"
 	"Blur.hpp"
@@ -134,6 +135,9 @@
 	"Assets.hpp"
 	"DistributedSelfStabilizingAlgorithms.hpp"
 	"CLI.hpp"
+	"MeasureUnits.hpp"
+	"NumberTheory.hpp"
+	"FileLoaderBMP.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
 	"Search.hpp"
@@ -145,7 +149,8 @@
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/Sort.hpp
 
-1608066845 /home/nq/codeblocks/workspace/Algorithms/CountProblems.hpp
+1608229039 /home/nq/codeblocks/workspace/Algorithms/CountProblems.hpp
+	<string>
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/Formatting.hpp
 	<string>
@@ -168,7 +173,7 @@
 	<fstream>
 	"CollectionTypes.hpp"
 
-1608066845 /home/nq/codeblocks/workspace/Algorithms/CollectionTypes.hpp
+1608224674 /home/nq/codeblocks/workspace/Algorithms/CollectionTypes.hpp
 
 1608122286 /home/nq/codeblocks/workspace/Algorithms/OpenGL.hpp
 	<GL/glew.h>
@@ -179,7 +184,7 @@
 	<SDL2/SDL.h>
 	<stdio.h>
 
-1608198402 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
+1608222304 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -191,20 +196,35 @@
 
 1608135856 /home/nq/codeblocks/workspace/Algorithms/triangle.hpp
 
-1608217519 /home/nq/codeblocks/workspace/Algorithms/Assets.hpp
+1608228460 /home/nq/codeblocks/workspace/Algorithms/Assets.hpp
 	<GL/glew.h>
 	<filesystem>
 	<fstream>
+	"CollectionTypes.hpp"
+	"NumberTheory.hpp"
+	<vector>
 
 1608202739 /home/nq/codeblocks/workspace/Algorithms/DistributedSelfStabilizingAlgorithms.hpp
 	"CollectionTypes.hpp"
 
-1608206140 /home/nq/codeblocks/workspace/Algorithms/CLI.hpp
+1608224344 /home/nq/codeblocks/workspace/Algorithms/CLI.hpp
 	<string>
 	"CollectionTypes.hpp"
 	"StringProcessing.hpp"
 
-1608204741 /home/nq/codeblocks/workspace/Algorithms/StringProcessing.hpp
+1608229039 /home/nq/codeblocks/workspace/Algorithms/StringProcessing.hpp
 	<string>
 	<vector>
+
+1608225470 /home/nq/codeblocks/workspace/Algorithms/MeasureUnits.hpp
+
+1608226984 /home/nq/codeblocks/workspace/Algorithms/NumberTheory.hpp
+	<iostream>
+
+1608226776 source:/home/nq/codeblocks/workspace/Algorithms/NumberTheory.cpp
+	"NumberTheory.hpp"
+
+1608231528 /home/nq/codeblocks/workspace/Algorithms/FileLoaderBMP.hpp
+	<GL/glew.h>
+	<stdio.h>
 

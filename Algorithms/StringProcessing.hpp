@@ -14,7 +14,7 @@
     generate symmetries of strings
     permute string (randomly or parametrically)
     parse CLI arguments, possibly of multiple formats <e.g.> -vsft vs -v -s -f -t vs --verbose --swift --force --temporal
-
+trim spaces at the end of a line, those before the \n (like CodeBlocks seems to be doing when saving the file)
 */
 /*  (*) string similarity / approximations / document distance (*)
 
@@ -72,6 +72,19 @@ bool isAlphaNumeric(char c) {
 
 bool isIdentifierStart(char c) {
     if(isAlpha(c) || c == '_') return true;
+    return false;
+}
+
+bool isBinary(char c);
+bool isOctal(char c);
+bool isDecimal(char c);
+bool isHexadecimal(char c) {
+    if(('A' <= c && c <= 'Z')
+    || ('a' <= c && c <= 'z')
+    || ('0' <= c && c <= '9')) {
+        return true;
+    }
+
     return false;
 }
 
@@ -156,5 +169,21 @@ bool isIdentical(char* a, char* b) {
     }
         // they are both '\0'
     return true;
+}
+
+/// Counting appearances of properties
+uint64_t CountHexBytesInString(std::string string) {
+    // consume everything except for hexadecimal symbols
+    // every two hexadecimal symbols form a byte
+
+    uint64_t count {0};
+    for(uint64_t idx {0}; idx < string.size(); idx++) {
+        if(isHexadecimal(string[idx])) count++;
+    }
+        // this suggests that maybe hexadecimals from the same byte should have no
+            // characters inbetween, but then again, maybe except for spaces; this
+            // is very case-dependent actually... (!?)
+    if(count % 2) std::cout << "Some hexadecimal remained unpaired.\n";
+    return count / 2;
 }
 #endif // STRINGPROCESSING_HPP_INCLUDED

@@ -17,6 +17,7 @@ struct DynamicArray {
     uint32_t cardinal {0};
     T* heap_allocated {nullptr};
 
+    DynamicArray() : capacity(1024), scalar(2) {}
     DynamicArray(uint32_t capacity, uint8_t scalar = 2) : capacity(capacity), scalar(scalar) {
         heap_allocated = new T[capacity];
         for(uint32_t idx {0}; idx < capacity; idx++) {

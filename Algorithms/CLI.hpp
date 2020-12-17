@@ -16,6 +16,7 @@
 // options: "a" "b" "c" "d"
 // flags: "-a" "-b" "-c" "-d"
 // file1, file2, etc. -> stored in ~ FILE[]
+
 /*
 struct CLIStateMachine {
     // options are swappable, so are flags; state can be reset
@@ -55,9 +56,10 @@ struct CLIStateMachine {
         }
     }
 };
+*/
 
 bool CLI_v1(int argc, char** argv) {
     printf("argc: %d, argv: ", argc); for(int idx {0}; idx < argc; idx++) printf("%s ", argv[idx]); printf("\n");
 }
-*/
+
 #endif // CLI_HPP_INCLUDED

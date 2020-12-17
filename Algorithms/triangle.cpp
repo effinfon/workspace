@@ -4,6 +4,7 @@
 using namespace std;
 
 #include "triangle.hpp"
+#include "Assets.hpp"
 #include <chrono>
 
 /* Use glew.h instead of gl.h to get all the GL prototypes declared */
@@ -116,20 +117,37 @@ void render(SDL_Window* window) {
     GLfloat triangle_vertices_local[] {
         0.0,    0.8,
         -0.8,   -0.8,
-        0.8,    -0.8
+        0.8,    -0.8,
+        1.0,    1.0,
+        0.5,    -0.5,
+        -0.5,   0.5
     };
 
-    glVertexAttribPointer(
-        attribute_coord2d, // attribute GLint
-        2,  // how many elements per vertex; here it's x and y positions
-        GL_FLOAT,   // the type of each element; all elements of same type
-        GL_FALSE,   // "take values as-is" (?)
-        0,  // no stride / data inbetween each position (or element ?)
-        triangle_vertices_local // pointer to data in C array
-    );
+//    glVertexAttribPointer(
+//        attribute_coord2d, // attribute GLint
+//        2,  // how many elements per vertex; here it's x and y positions
+//        GL_FLOAT,   // the type of each element; all elements of same type
+//        GL_FALSE,   // "take values as-is" (?)
+//        0,  // no stride / data inbetween each position (or element ?)
+//        &triangle_vertices_local[0]    // pointer to data in C array
+//    );
+//
+//    // "push each element in buffer_vertices to the vertex shader" (!?)
+//    glDrawArrays(GL_TRIANGLES, 0, 3);   // type, first, count
+//
+//    glVertexAttribPointer(
+//        attribute_coord2d, // attribute GLint
+//        2,  // how many elements per vertex; here it's x and y positions
+//        GL_FLOAT,   // the type of each element; all elements of same type
+//        GL_FALSE,   // "take values as-is" (?)
+//        0,  // no stride / data inbetween each position (or element ?)
+//        &triangle_vertices_local[3]    // pointer to data in C array
+//    );
+//    glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    // "push each element in buffer_vertices to the vertex shader" (!?)
-    glDrawArrays(GL_TRIANGLES, 0, 3);   // type, first, count
+    Quadrilateral quad {-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0};
+    quad.DrawStairs(attribute_coord2d);
+
     glDisableVertexAttribArray(attribute_coord2d);  // host switches off attribute,
             // but leaves program on (?)
 
@@ -163,7 +181,7 @@ int Start_Triangle_v1(int argc, char* argv[]) {
 	SDL_Init(SDL_INIT_VIDEO);
 	SDL_Window* window = SDL_CreateWindow("My First Triangle",
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		640, 480,
+		1024, 960,
 		SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	SDL_GL_CreateContext(window);
 

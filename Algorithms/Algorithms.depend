@@ -113,7 +113,7 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1608120717 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1608211319 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
@@ -131,6 +131,9 @@
 	"CollectionTypes.hpp"
 	"OpenGL.hpp"
 	"triangle.hpp"
+	"Assets.hpp"
+	"DistributedSelfStabilizingAlgorithms.hpp"
+	"CLI.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
 	"Search.hpp"
@@ -176,14 +179,32 @@
 	<SDL2/SDL.h>
 	<stdio.h>
 
-1608127320 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
+1608198402 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
 	"triangle.hpp"
+	"Assets.hpp"
 	<chrono>
 	<GL/glew.h>
 	<SDL2/SDL.h>
 
-1608120622 /home/nq/codeblocks/workspace/Algorithms/triangle.hpp
+1608135856 /home/nq/codeblocks/workspace/Algorithms/triangle.hpp
+
+1608217519 /home/nq/codeblocks/workspace/Algorithms/Assets.hpp
+	<GL/glew.h>
+	<filesystem>
+	<fstream>
+
+1608202739 /home/nq/codeblocks/workspace/Algorithms/DistributedSelfStabilizingAlgorithms.hpp
+	"CollectionTypes.hpp"
+
+1608206140 /home/nq/codeblocks/workspace/Algorithms/CLI.hpp
+	<string>
+	"CollectionTypes.hpp"
+	"StringProcessing.hpp"
+
+1608204741 /home/nq/codeblocks/workspace/Algorithms/StringProcessing.hpp
+	<string>
+	<vector>
 

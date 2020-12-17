@@ -142,4 +142,19 @@ bool isPangramAlphaInsensitive(std::string string) {
     return true;
 }
 
+/// Comparisons
+bool isIdentical(char* a, char* b) {
+    uint64_t idx {0};
+    while(a[idx] != '\0' && b[idx] != '\0') {
+        if(a[idx] != b[idx]) {
+            return false;
+        }
+    }
+        // at least one is '\0', but are they both ?
+    if(a[idx] != b[idx]) {
+        return false;   // one is '\0' and the other is not
+    }
+        // they are both '\0'
+    return true;
+}
 #endif // STRINGPROCESSING_HPP_INCLUDED

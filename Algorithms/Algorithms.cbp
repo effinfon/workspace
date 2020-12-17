@@ -11,6 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
+				<Option parameters="a s d f g -a -b -c -d -e -h 12 sdahj sak asd.txt ee.exe pdf.pdf bla txt.txt" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
@@ -36,19 +37,27 @@
 		<Linker>
 			<Add library="benchmark" />
 			<Add library="pthread" />
+			<Add library="GL" />
+			<Add library="glut" />
+			<Add library="X11" />
+			<Add library="SDL2" />
+			<Add library="GLEW" />
 		</Linker>
 		<Unit filename="Animation.hpp" />
+		<Unit filename="Assets.hpp" />
 		<Unit filename="BigUint.hpp" />
 		<Unit filename="BinarySearch.hpp" />
 		<Unit filename="Bitmap.hpp" />
 		<Unit filename="Blur.hpp" />
 		<Unit filename="BookNotes" />
+		<Unit filename="CLI.hpp" />
 		<Unit filename="CollectionTypes.hpp" />
 		<Unit filename="CommandLineArguments.hpp" />
 		<Unit filename="CommonComplications" />
 		<Unit filename="CompilingTracking.hpp" />
 		<Unit filename="ComputationalCurves_Shapes.hpp" />
 		<Unit filename="CountProblems.hpp" />
+		<Unit filename="DistributedSelfStabilizingAlgorithms.hpp" />
 		<Unit filename="ExtendedUint.hpp" />
 		<Unit filename="FibonnaciSearch.hpp" />
 		<Unit filename="FileIO.hpp" />
@@ -57,6 +66,7 @@
 		<Unit filename="Graph.hpp" />
 		<Unit filename="GraphAlgorithms.hpp" />
 		<Unit filename="HackerRank.hpp" />
+		<Unit filename="IDE.hpp" />
 		<Unit filename="InsertionSort.hpp" />
 		<Unit filename="IteratorStateMachine.hpp" />
 		<Unit filename="Linearity.hpp" />
@@ -64,6 +74,8 @@
 		<Unit filename="Linux.hpp" />
 		<Unit filename="Maze.hpp" />
 		<Unit filename="MemoryAllocator.hpp" />
+		<Unit filename="MinimizeRecompilation.hpp" />
+		<Unit filename="OpenGL.hpp" />
 		<Unit filename="Pbinfo.hpp" />
 		<Unit filename="Polynomial.hpp" />
 		<Unit filename="PolynomialsHeterogeneous.hpp" />
@@ -86,6 +98,10 @@
 		<Unit filename="Utilitary.hpp" />
 		<Unit filename="VascularNetworks.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="shader1.fs" />
+		<Unit filename="shader1.vs" />
+		<Unit filename="triangle.cpp" />
+		<Unit filename="triangle.hpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

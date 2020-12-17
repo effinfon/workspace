@@ -1,0 +1,22 @@
+CC = g++	# C file extensions
+CXX = g++	# C++ file extensions
+CFLAGS = -Wall -O2
+CXXFLAGS = -Wall -O2 -std=gnu++17
+
+LOADLIBES = -lm
+
+SRC1 = Agent.cpp Breeder.cpp CandidateSolution.cpp \
+	Cupid.cpp FateAgent.cpp Grid.cpp Reaper.cpp \
+	Fitness.cpp
+SRC2 = main.cpp
+
+SRC = $(SRC1) $(SRC2)
+OBJS = $(SRC1:.cpp = .o)	# interesting one; I have been looking for something like this
+AUX = $(SRC1:.c = .h)
+
+main: $(OBJS)
+#	$(CC) $(CFLAGS) -o $(SRC) $(AUX)
+
+.PHONY: clean
+clean:
+	rm -f *.o main

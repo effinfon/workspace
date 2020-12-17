@@ -1,0 +1,8 @@
+all: program	# I think that if a target fits the name of a file, then $make will also verify if the target file is "older" than the pre-requisistes, as that signifies that likely there has been an update in the pre-requisistes (?!); this hypothesis didn't seem to work; but somehow, it still does check if the target is older than its pre-requisistes; maybe format suffixes are needed to differentiate files from ~ "palceholder targets" (?!)
+program: a.out # this worked fine actually; all I had to do was "hide" / "wrap" things I want to have conditionally executing behind "targets with no commands" (which have nothing executing if they, the corresponding target files, already exist)
+a.out: main.o triangle.o # this is stupid, it links the program again; why (?!); thy only implemented that the object file will not be recompiled, but did nothing about the executable itself being a repeat of linkage (!?); as such, whether the object files get to link again will depend on whether the pre-requisies are "old" or not (?!), and somehow make the linking dependently occur based on recompilation of object files
+	g++ main.o triangle.o -o a.out -lGL -lGLEW -lglut -lSDL2
+main.o: main.cpp # a bunch of header files
+	g++ -c main.cpp	# note: just for compiling with -c, the libraries are not needed; those are strictly for linking; headers are used as "bindinds" between source code and the libraries, at this point, when compiling
+triangle.o: triangle.cpp triangle.hpp
+	g++ -c triangle.cpp

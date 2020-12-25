@@ -2,6 +2,7 @@
 #define ASYNC_HPP_INCLUDED
 
 #include <iostream>
+#include <thread>
 #include <future>
 /// TD
 /*
@@ -42,6 +43,8 @@ void asyncFunction() {
 
 }
 
+    // (!?) warning: this function is dangerous; the compiled program behaved unexpectedly,
+        // always computing that the argument int a := 0, when instead it aws 123 or 200
 int asyncFunction2(int a) {
     printf("Entered the async function.\nThe current thread's ID is %u.\n", std::this_thread::get_id());
     a = a + a;
@@ -56,8 +59,18 @@ void playground_v1() {
     printf("The current thread's ID is %u.\n", std::this_thread::get_id());
     fn.get();
 
-    std::future<int> fn2 = async(std::launch::async, asyncFunction2, 200);
+    int input2 = 200;
+    std::future<int> fn2 = async(std::launch::async, asyncFunction2, input2);
     std::cout << "Output of async2: " << fn2.get() << "\n";
+    if(fn2.valid())
+        fn2.get();
+    else
+        printf("Invalid; it has already been get().\n");
+}
+
+void playground_v2() {
+    std::promise<int> prom;
+    std::future<int> fut = prom.get_future();
 }
 
 };

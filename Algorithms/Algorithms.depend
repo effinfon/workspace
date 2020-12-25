@@ -113,39 +113,10 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1608912777 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1608926959 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
-	<filesystem>
-	"BinarySearch.hpp"
-	"FibonnaciSearch.hpp"
-	"Sort.hpp"
-	"CountProblems.hpp"
-	"Formatting.hpp"
-	"StringProcessing.hpp"
-	"Linux.hpp"
-	"Bitmap.hpp"
-	"Blur.hpp"
-	"Polynomial.hpp"
-	"FileIO.hpp"
-	"CollectionTypes.hpp"
-	"Graph.hpp"
-	"OpenGL.hpp"
-	"OpenGL_v2.h"
-	"triangle.hpp"
-	"Assets.hpp"
-	"RandomInputGenerator.hpp"
-	"DistributedSelfStabilizingAlgorithms.hpp"
-	"CLI.hpp"
-	"MeasureUnits.hpp"
-	"NumberTheory.hpp"
-	"FileLoaderBMP.hpp"
-	"VAO_VBO.hpp"
-	"Prime.hpp"
-	"Dts.hpp"
-	"KinematicEngine.hpp"
-	"MultiThreaded.hpp"
 	"Async.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
@@ -289,7 +260,7 @@
 	<mutex>
 	"Prime.hpp"
 
-1608926638 /home/nq/codeblocks/workspace/Algorithms/Async.hpp
+1608927147 /home/nq/codeblocks/workspace/Algorithms/Async.hpp
 	<iostream>
 	<future>
 

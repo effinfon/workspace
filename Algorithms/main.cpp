@@ -2,42 +2,6 @@
 #include <string>
 #include <vector>
 
-
-#include <filesystem>
-namespace fs = std::filesystem;
-
-#include "BinarySearch.hpp"
-#include "FibonnaciSearch.hpp"
-#include "Sort.hpp"
-#include "CountProblems.hpp"
-#include "Formatting.hpp"
-#include "StringProcessing.hpp"
-
-#include "Linux.hpp"
-#include "Bitmap.hpp"
-#include "Blur.hpp"
-#include "Polynomial.hpp"
-#include "FileIO.hpp"
-#include "CollectionTypes.hpp"
-#include "Graph.hpp"
-
-#include "OpenGL.hpp"
-#include "OpenGL_v2.h"
-#include "triangle.hpp"
-#include "Assets.hpp"
-#include "RandomInputGenerator.hpp"
-
-#include "DistributedSelfStabilizingAlgorithms.hpp"
-#include "CLI.hpp"
-#include "MeasureUnits.hpp"
-#include "NumberTheory.hpp"
-#include "FileLoaderBMP.hpp"
-#include "VAO_VBO.hpp"
-
-#include "Prime.hpp"
-#include "Dts.hpp"
-#include "KinematicEngine.hpp"
-#include "MultiThreaded.hpp"
 #include "Async.hpp"
 
 int main(int argc, char** argv) {
@@ -110,6 +74,7 @@ int main(int argc, char** argv) {
 //    playground::testPlayground3(1, 10000000, 8);
 
     async_playground::playground_v1();
+    async_playground::playground_v2();
 }
 
 

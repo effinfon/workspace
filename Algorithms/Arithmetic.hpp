@@ -1,0 +1,10 @@
+#ifndef ARITHMETIC_HPP_INCLUDED
+#define ARITHMETIC_HPP_INCLUDED
+
+/// TD
+/*
+    radix (*?)
+
+*/
+
+#endif // ARITHMETIC_HPP_INCLUDED

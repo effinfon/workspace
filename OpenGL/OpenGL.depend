@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1608737333 source:/home/nq/codeblocks/workspace/OpenGL/main.cpp
+	<iostream>
+	<math.h>
+	<GL/glew.h>
+	<SDL2/SDL.h>
+	<GL/glew.h>
+	<GL/freeglut.h>
+	"shader_utils.hpp"
+	<glm/glm.hpp>
+	<glm/gtc/matrix_transform.hpp>
+	<glm/gtc/type_ptr.hpp>
+
+1608722534 source:/home/nq/codeblocks/workspace/OpenGL/tut1.cpp
+	"header.hpp"
+	<stdio.h>
+	<stdlib.h>
+	<GL/glew.h>
+	<GL/freeglut.h>
+
+1608722555 /home/nq/codeblocks/workspace/OpenGL/header.hpp
+
+1608734290 source:/home/nq/codeblocks/workspace/OpenGL/shader_utils.cpp
+	<stdio.h>
+	<stdlib.h>
+	<GLES2/gl2.h>
+
+1608734190 /home/nq/codeblocks/workspace/OpenGL/shader_utils.hpp
+
+1608737512 source:/home/nq/codeblocks/workspace/OpenGL/res_texture.cpp
+

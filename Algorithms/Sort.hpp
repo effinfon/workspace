@@ -1,6 +1,9 @@
 #ifndef SORT_HPP_INCLUDED
 #define SORT_HPP_INCLUDED
 
+#ifdef count_type
+#undef count_type
+#endif
 #define count_type uint32_t
 #define c_t count_type
 

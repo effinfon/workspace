@@ -13,8 +13,12 @@
         maybe using VLC if it helps, but I'd rather guess that a bitstream method is
         needed for that (with a separator) and even then would not do better than "having the
         compile-time, structural knowledge" about which type is stored where and how long it is
-
+    arbitrary length uint type (!?)
 */
+
+struct ArbUint {
+
+};
 
 uint64_t fibonacci(uint64_t uint_bits) {
     if(uint_bits == 32) {
@@ -39,4 +43,21 @@ uint64_t fibonacci(uint64_t uint_bits) {
     }
 }
 
+// (!!?) some algorithms can be executed and directly turned into their output as pre-compute,
+    // especially if the algorithm itself occupies more space than the result (!?)
+uint32_t u32_squares() {
+    uint32_t count {0};
+    for(uint32_t idx {1}; idx * idx >= idx; idx++, count++) ;
+    return count;
+}
+uint64_t u64_squares() {
+    uint64_t count {0};
+    for(uint64_t idx {1}; idx * idx >= idx; idx++, count++) ;    // the point of this is to stop on the first overflow (!?)
+    return count;
+}   // so this could be turned into "static uint64_t u64_squares {...}"
+uint64_t u64_cubes() {
+    uint64_t count {0};
+    for(uint64_t idx {1}; idx * idx * idx >= idx; idx++, count++) ;
+    return count;
+}
 #endif // COUNTPROBLEMS_HPP_INCLUDED

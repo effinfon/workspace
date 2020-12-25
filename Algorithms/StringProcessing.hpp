@@ -14,13 +14,22 @@
     generate symmetries of strings
     permute string (randomly or parametrically)
     parse CLI arguments, possibly of multiple formats <e.g.> -vsft vs -v -s -f -t vs --verbose --swift --force --temporal
-trim spaces at the end of a line, those before the \n (like CodeBlocks seems to be doing when saving the file)
+    trim spaces at the end of a line, those before the \n (like CodeBlocks seems to be doing when saving the file)
 */
 /*  (*) string similarity / approximations / document distance (*)
 
 */
-
-
+/// 24 Dec
+/*
+    parenthesis pairs and nestings
+    automatic indentation adjuster, based on nestedness within curly bracket pairs "{...}" (it properly indents each
+        new line caught between two curly brackets, but note that the curly brackets might also close before any new
+        line gets to appear
+    automatic styling: after any '{' it will adjust the curly bracket at the right indentation and will introfduce a
+        // new line after the symbol, the '{' will remain on the same line as its "pre-block" (if any; sometimes the
+        curly brackets are used to simply define unnamed scopes for memory management to automatically allocate-deallocate
+        and to limit the lifespan of an identifier (*?), etc.
+*/
 
 
 

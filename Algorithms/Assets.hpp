@@ -8,6 +8,7 @@ namespace fs = std::filesystem;
 
 #include "CollectionTypes.hpp"
 #include "NumberTheory.hpp"
+#include "FileLoaderBMP.hpp"
 #include <vector>
 
 struct PixelRGB {
@@ -202,5 +203,5 @@ struct Quadrilateral {
     }
 };
 
-
+GLuint LoadBMPIntoOpenGL(Bitmap_v2 bitmap);
 #endif // ASSETS_HPP_INCLUDED

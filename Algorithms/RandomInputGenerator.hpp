@@ -5,6 +5,9 @@
 #include <memory>
 #include <iostream>
 #include <bitset>
+#include <GL/glew.h>
+
+#include "Graph.hpp"
 
     // this template needs to generate a
         // templatized size
@@ -77,4 +80,27 @@
         return input;
     }
 
+GLfloat** generateTriangles(int howMany, int howMuch) {
+    GLfloat** result_master = new GLfloat*[howMuch];
+
+    for(int idx_master {0}; idx_master < howMuch; idx_master++) {
+        GLfloat* result = new GLfloat[howMany * 3];
+        for(int idx {0}; idx < howMany; idx++) {
+            result[3 * idx + 0] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+            result[3 * idx + 1] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+            result[3 * idx + 2] = static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+
+        }
+        result_master[idx_master] = result;
+    }
+    return result_master;
+}
+
+AdjacencyMatrix GenerateRandomUndirectedGraphAdjacencyMatrix(uint32_t size) {
+
+}
+AdjacencyMatrix GenerateRandomDirectedGraphAdjacencyMatrix(uint32_t size) {
+    std::mt19937 rand;
+    AdjacencyMatrix* result = new AdjacencyMatrix(size);
+}
 #endif // RANDOMINPUTGENERATOR_HPP_INCLUDED

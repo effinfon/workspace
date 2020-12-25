@@ -1,0 +1,7 @@
+//layout (location = 1) in vec3 color;
+
+
+// layout (location = ?)
+//    vec3 temp = position * color;
+
+//            char* errorMessage = (char*)alloca(length * sizeof(char));

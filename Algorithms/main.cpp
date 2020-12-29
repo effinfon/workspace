@@ -2,7 +2,17 @@
 #include <string>
 #include <vector>
 
-#include "Async.hpp"
+//#include <sys/signal.h>
+//#include <unistd.h>
+
+//#include "Async.hpp"
+//#include "HeteroType.hpp"
+//#include "VersionControl.hpp"
+//#include "Graphics.hpp"
+//#include "Decomposition.hpp"
+//#include "Games.hpp"
+#include "SFML.hpp"
+#include "ChatNetwork.hpp"
 
 int main(int argc, char** argv) {
 // test OpenGL
@@ -73,8 +83,37 @@ int main(int argc, char** argv) {
 //    test1(1000000001);
 //    playground::testPlayground3(1, 10000000, 8);
 
-    async_playground::playground_v1();
-    async_playground::playground_v2();
+//    async_playground::playground_v1();
+//    async_playground::playground_v2();
+
+//    kill(getpid(), SIGABRT);
+
+//    int32_t original_bitmaski {0b1000000000000000000000000};
+//    uint32_t original_bitmaskui {0b1000000000000000000000000};
+//    for(uint8_t idx {0}; idx < 64; idx++) {
+//        std::cout << "int: " << original_bitmaski << " uint: " << original_bitmaskui << "\n";
+//        original_bitmaskui >> 1;
+//        original_bitmaski >> 1;
+//    }
+
+//    uint64_t initial[64] {123, 456, 789, 012, 345, 678, 901, 234, 567, 890};
+//    ConwayLife life1 {initial};
+//    life1.TerminalPrint();
+//    printf("\n");
+//    life1.NextStateSpace();
+//    life1.TerminalPrint();
+
+/// TD
+    SFML::main();
+
+/// TD
+//    Chat::Server server;
+//
+//    Chat::Client client1;
+//    client1.Connect("127.0.0.1", 12345);
+//    Chat::Client client2;
+//    client2.Connect("localhost", 12345);
+//    client1.Run();
 }
 
 

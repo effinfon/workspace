@@ -68,9 +68,64 @@ void playground_v1() {
         printf("Invalid; it has already been get().\n");
 }
 
+// (*?) to me it seems like promises are "the same" as thread.join(), except
+    // any thread that's responsible for setting a promise does not necessarely
+    // have to close after setting the promise; on the other hand, if a promise is
+    // shared between multiple threads, does future.get() still block ? I mean that
+    // there could very well be multiple points where the promise is promise.set() (*?)
+int asyncFunction3(uint64_t value, std::promise<int>& prom) {
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+//    std::future<int> fut = prom.get_future(); // (*?) futures cannot be "extracted" multiple times
+        // due to that, even this function (which will be executed by two threads or some other number of threads)
+        // will throw a future_error when one tries to get_future() and check if it's still valid;
+    // (*?) thus, a promise should only be passed by reference to those threads which are meant to return a future,
+    // the "promise" is a sort of "reference ownership" mechanism, not type-integrated but at least which throws exceptions,
+    // but then crashes the program (?); better integration with the type system could
+
+//    if(fut.valid())
+        prom.set_value(200 + value);
+//    else
+//        printf("A thread tried to write to an already fulfilled promise.\n");
+}
+
 void playground_v2() {
+    {
     std::promise<int> prom;
-    std::future<int> fut = prom.get_future();
+        // (*?) but, what is the purpose of getting the future of a promise from here ? can this be done twice or what ?
+            // is it done between the ~ "receiver thread" and the "setter thread" (?)
+        // (*?) it has now been noticed that the "setter thread" does at no point "get the future of the promise", but
+            // instead directly set a value onto the promise; the future remains internal to the promise
+    std::future<int> fut = prom.get_future();   // (*?) this really makes it seem like std::future<> is a ~ "reference type"
+
+    std::thread t1 {asyncFunction3, 123, ref(prom)};
+    //std::thread t2 {asyncFunction3, 456, ref(prom)};
+
+    std::cout << "Get promise: " << fut.get() << "\n";
+    t1.join();  // as can be seen here, the promise has already been set, but the thread
+                // does not have to stop at that point; so far, a promise seems to be a sort
+                // of "an asynch composed with a mutex" (*?) [but even so, it blocks only until
+                // the first write to the mutex / promise; another variation would be one that
+                // "un-blocks" / "de-blocks" upon different conditions, such as a counting of
+                // writes to the mutex, or some other mutex being written to, etc. (*?)
+    //t2.join();
+    if(fut.valid()) // (*?) but, "retrieval" from a future can be done in multiple places, and there is
+                    // a ~ "safety check" for this with future.valid()
+        std::cout << "Get promise: " << fut.get() << "\n";
+    else
+        printf("This future has already been retrieved.\n");
+    }
+    // (*?( deallocate the promise, allocate it again, send it to another thread, and this
+        // time thread.join() and only afterwards future.get()
+    {
+    std::promise<int> prom;
+    // this time skip the get future step
+
+    std::thread t1 {asyncFunction3, 321, ref(prom)};
+    t1.join();
+        // (*?) so one unavoidably has to get the future of a promise, to "get the value out"
+    std::cout << "Promise result: " << prom.get_future().get() << "\n";
+    }
 }
 
 };

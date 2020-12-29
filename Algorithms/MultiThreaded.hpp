@@ -22,8 +22,19 @@
 /*
     a waiting loop with a "reasonable" timeout (*?)
     a "thread pool" (*?)
-    shared memory between multiple threads and inter-thread communication
-
+    shared memory between multiple threads and inter-thread communication (so far I am limited to
+        // atomic and mutex, with the addition of lock_guard); but the case remains that there is
+        // no nice syntax for explicitating "thread, shared memory" (*?); there are ways by simply
+        // making the variables "global" to the functions the threads execute and/or the main thread,
+        // but actually this mechanism too has interesting merits that need more studying (*!?); the
+        // only place to speciffy "thread, private memory" seems to be at the entrance point's interface,
+        // and (eventually) all along the scopes of the deriving logic structure from those entry points (so,
+        // this includes static variables as yet another mechanism for shared memory, but all of the local variables
+        // are (probably ?) the thread's private memory, and depending on the execution's logic / logic flow at run-time
+        // it might also grow / shrink ~ arbitrarily
+    (?) are there mechanisms to timeout a thread ? the more "sophisticated" requirement was to detect whether a thread
+        // has become "stuck" / entered an infinite loop, or whether it can decidably be proven that a thread will never halt (*!?),
+        // in order to terminate it (?)
 */
 /*
     how to get the right time in the system, because as it is it says it's in year 120

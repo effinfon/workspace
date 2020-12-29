@@ -145,7 +145,7 @@ void render(SDL_Window* window) {
 //    );
 //    glDrawArrays(GL_TRIANGLES, 0, 3);
 
-    Quadrilateral quad {-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0};
+    Assets::Quadrilateral quad {-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0};
     quad.DrawStairs(attribute_coord2d);
 
     glDisableVertexAttribArray(attribute_coord2d);  // host switches off attribute,

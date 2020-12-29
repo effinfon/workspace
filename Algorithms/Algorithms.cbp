@@ -63,6 +63,8 @@
 		<Unit filename="CompilingTracking.hpp" />
 		<Unit filename="ComputationalCurves_Shapes.hpp" />
 		<Unit filename="CountProblems.hpp" />
+		<Unit filename="Debugger.hpp" />
+		<Unit filename="Decomposition.hpp" />
 		<Unit filename="DigitSeries.hpp" />
 		<Unit filename="DistributedSelfStabilizingAlgorithms.hpp" />
 		<Unit filename="Dts.hpp" />
@@ -75,13 +77,17 @@
 		<Unit filename="FileLoaderDDS.hpp" />
 		<Unit filename="Filesystem.hpp" />
 		<Unit filename="Formatting.hpp" />
+		<Unit filename="Games.hpp" />
 		<Unit filename="Graph.hpp" />
 		<Unit filename="GraphAlgorithms.hpp" />
+		<Unit filename="Graphics.hpp" />
 		<Unit filename="HackerRank.hpp" />
+		<Unit filename="HeteroType.hpp" />
 		<Unit filename="IDE.hpp" />
 		<Unit filename="InsertionSort.hpp" />
 		<Unit filename="IteratorStateMachine.hpp" />
 		<Unit filename="KinematicEngine.hpp" />
+		<Unit filename="Language.hpp" />
 		<Unit filename="Lattice.hpp" />
 		<Unit filename="Linearity.hpp" />
 		<Unit filename="LinkedList.hpp" />
@@ -111,6 +117,8 @@
 		<Unit filename="Sort.hpp" />
 		<Unit filename="SortingBenchmark.hpp" />
 		<Unit filename="StringProcessing.hpp" />
+		<Unit filename="SystemMemoryProfiler.hpp" />
+		<Unit filename="Terminal.hpp" />
 		<Unit filename="Test.hpp" />
 		<Unit filename="TestRingBuffer.hpp" />
 		<Unit filename="ThreadPool.hpp" />

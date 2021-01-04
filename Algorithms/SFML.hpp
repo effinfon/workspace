@@ -10,13 +10,16 @@
 
 #include <string>
 #include <algorithm>
+#include <filesystem>
 
 /// TD
 /*
     your own Circle type made from many radially placed triangles (multi-threading maybe ?)
     networking: open sockets, communicate with other programs on the machine through their sockets, open
         // a listening port, broadcast through UDP to everything local, etc.
-    crawl
+    crawler
+    2Dim state-spaces -> (pixels ->) image
+    3Dim state-spaces -> (voxels -> projection ->) image
 */
 
 namespace SFML {
@@ -94,13 +97,58 @@ namespace Graphics {
     void RenderBoolArray(bool array[rows][cols]) {
 
     }
+
+    void FindFile(const char * pattern, const char * search_location) {
+
+    }
+
+    void RenderImageFile(sf::RenderWindow* window, std::string file_pathname) {
+        sf::Texture texture;
+        if(!texture.loadFromFile(file_pathname)) {
+            printf("Error loading this file. Does it exist or is it too big to fit in RAM memory ? Or is access to it blocked ?\n");
+        }
+
+            // (*?) likely used for loading from an image / texture atlas (!?)
+        sf::Texture cropTexture;    // (*?) the IntRect() will have a ~ "pattern generating function"
+            // that fits the texture atlas beiong read from
+        if(!texture.loadFromFile(file_pathname, sf::IntRect(0, 0, 30, 30))) { ; }
+
+        sf::Texture empty_texture;
+        empty_texture.create(200, 200);
+
+        // ... there's some more about textures, but not now
+
+        sf::Sprite sprite;
+        sprite.setTexture(texture);
+        window->draw(sprite);
+    }
 };
 
 
 void GraphicsMain() {
-    sf::RenderWindow window {sf::VideoMode(400, 400), "Title"};
+    sf::RenderWindow window {sf::VideoMode(1200, 800), "Title"};
     sf::CircleShape circle(300.f);
     circle.setFillColor(sf::Color::Green);
+
+    std::string file_pathname {"image.png"};
+
+    sf::Texture texture;
+    if(!texture.loadFromFile(file_pathname)) {
+        printf("Error loading this file. Does it exist or is it too big to fit in RAM memory ? Or is access to it blocked ?\n");
+    }
+
+        // (*?) likely used for loading from an image / texture atlas (!?)
+    sf::Texture cropTexture;    // (*?) the IntRect() will have a ~ "pattern generating function"
+        // that fits the texture atlas beiong read from
+    if(!cropTexture.loadFromFile(file_pathname, sf::IntRect(0, 0, 30, 30))) { ; }
+//
+    sf::Texture empty_texture;
+    empty_texture.create(200, 200);
+
+    // ... there's some more about textures, but not now
+
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
 
     while(window.isOpen()) {
         sf::Event event;
@@ -113,7 +161,7 @@ void GraphicsMain() {
         }
 
         window.clear();
-        window.draw(circle);
+        window.draw(sprite);
         window.display();
     }
 }

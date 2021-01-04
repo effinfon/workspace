@@ -4,7 +4,7 @@
 /// TD
 /*
     dynamically re-allocating array
-    linked list
+    linked list (singly, doubly, circular)
 */
 /*
     monitoring tools for size and performance and etc. (*?!) <e.g.> how much of a linked list is data and how much is related to its structure (*?), etc.

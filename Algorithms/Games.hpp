@@ -1,7 +1,16 @@
 #ifndef GAMES_HPP_INCLUDED
 #define GAMES_HPP_INCLUDED
 
-/// TD
+#include <SFML/Graphics.hpp>
+#include <SFML/Network.hpp>
+#include <SFML/Audio.hpp>
+
+#include <thread>
+#include <chrono>
+#include <mutex>
+#include <random>
+
+/// TODO
     // these are to be used for developing (A)AI players, defining "concepts" and "abstractions" needed for (A)AI architecture
 /*
     Chess
@@ -20,6 +29,12 @@
     "Ray reflector in a box" (with "self-continuing state-space")
 
 */
+/*  SETTINGS (MENU)
+
+    keyboard mapping:
+        // character set,...
+        // mapping a particular Keyboard.code to a particular action (or said inversely, assigning Keyboard.code's to actions <e.g.> Crouch: C / RSHIFT, etc.)
+*/
 
 // (*?) need a mechanism for specifying different "variants" for an abstraction / "thing" / "concept" / "function" / "struct" / "implementation", etc (!?)
 // <e.g.> for now, ConwayLife will be using a static (discrete) state-space / "map", but eventually it will be able to adapt dynamically (and maybe use a non
@@ -29,6 +44,7 @@
     // a matrix, a bitmap, ect.; the general problem is that of "adjacency"; but do also think about "borders of self-continuing (discrete) state-spaces", such
     // as some variants of $Snake
 
+namespace Games {
 
 struct ConwayLife {
     // let's start with a 64 by 64 state-space, such as to have a square space but also utilize the register memory well
@@ -175,5 +191,558 @@ struct ConwayLife {
     void ToBitmap() {   // this goes to OpenGL / Vulkan to be rendered
 
     }
+};
+
+// (*?) as it is, it can be used to load different sprites and move them around, maybe even makign circuits using some sort of collision detection
+    // and functions that "merge" / "combine" colliding sprites, etc.
+struct RPG {
+    // (*!?) data from files should be loaded only once in memory and shared to all instances where it is used; and yet,
+        // if there are "write use cases" (and not just "read use cases"
+
+    inline static std::mutex mainWindow_access {};
+    inline static bool terminate {false};   // (*?) multi-threading dynamic start / termination by using ~ signals (shared resources / shared memory / "global variables" to communicate)
+
+    // (*?) the current design of the program has forced me to make these static, probably due
+        // to the order in which things get initialized, or because there are structs whose initialization
+        // makes use of variables that themselves need initialization, but actually get initializd when an
+        // object gets constructed, and not when the type gets initialized; that poses a problem for the initialization
+        // of the other types
+    sf::RenderWindow mainWindow;
+    inline static uint32_t mainWindow_width {};
+    inline static uint32_t mainWindow_height {};
+    inline static const char * mainWindow_title {"RPG 1a v0.1"};
+
+    sf::Image background_img;
+    sf::Texture background_tex;
+    sf::Sprite background_spr;
+    inline static const char * background_image_file_pathname {"img/background.jpeg"};
+
+    struct RenderWindow {
+//        inline static std::mutex mainWindow_access {};
+//        inline static bool terminate {false};   // (*?) multi-threading dynamic start / termination by using ~ signals (shared resources / shared memory / "global variables" to communicate)
+
+        sf::RenderWindow mainWindow;
+        uint32_t width {};
+        uint32_t height {};
+        inline static const char * title {"RPG 1a v0.1"};
+
+        sf::Image background_img;
+        sf::Texture background_tex;
+        sf::Sprite background_spr;
+
+        inline static const char * background_image_file_pathname {"img/background.jpeg"};
+    };
+
+    struct IntroWindow {
+        struct Text {
+            sf::Font font;
+
+            sf::Text game_title;
+            sf::Text start_new_game;
+            sf::Text options;
+            sf::Text exit;
+        };
+        struct Animation {
+            sf::Sprite sprite_box;
+            sf::Texture* animations;
+        };
+
+
+    };
+
+    struct Player {
+        inline static const char * player_image_file_pathname {"img/player1.png"};
+
+        inline static const uint8_t count_players {2};
+        inline static const uint8_t count_positions /* directions */ = 4;   // order: left, right, up, down
+        inline static const uint8_t texture_width {26}; // (*?) this data should be dynamically handled: contained by the image files, and this maybe optimized dynamically
+        inline static const uint8_t texture_height[count_players] {28, 22};
+
+        sf::Image player_img;
+        sf::Texture player_tex_atlas[count_players][count_positions]; // order: left, right, up, down
+        sf::Sprite player_spr[2];  // 26 x 28 or 26 x 22
+
+        uint8_t current_player_sprite {0};
+
+        enum SpriteDirection {
+            Left = 0,
+            Right,
+            Up,
+            Down,
+        } sprite_direction { Down };
+
+        enum SpriteAction {
+            Attack = 0,
+            Parry,
+            Jump,
+            Crouch,
+        };
+
+    public:
+        Player() { Init(); }
+
+        void Init() {
+            player_img.loadFromFile(player_image_file_pathname);
+
+            uint64_t texture_cummulated_height {0}; // (*?) to be used later
+
+            for(uint8_t idx_player {0}; idx_player < count_players; idx_player++) {
+                for(uint8_t idx_pos {0}; idx_pos < count_positions; idx_pos++) {
+
+                    std::pair<int, int> topleft {};
+                    topleft.first = 0 + idx_pos * texture_width;
+                    topleft.second = 0 + idx_player * texture_height[0];    // (*?) texture_cummulated_height, which runs across $idx_player
+                                                            // (*!?) this needs to be more general; all this complication is useless; images are
+                                                            // themselves strings, everything is essentially 1Dim here (!), so make adjustments to the file format
+
+                    std::pair<int, int> bottomright {};
+                    bottomright.first = topleft.first + texture_width;
+                    bottomright.second = topleft.second + texture_height[idx_player];   // (*?) this one will not have to do with cummulated height itself, because
+                                                            // it's written in reference to a variable that already includs that
+
+                    player_tex_atlas[idx_player][idx_pos].loadFromImage(player_img, sf::IntRect(topleft.first, topleft.second, bottomright.first, bottomright.second));
+                }
+
+                player_spr[idx_player] = sf::Sprite(player_tex_atlas[idx_player][3]);   // initialize in position looking Down
+                // (*?) there is another thing to do with sprites that have different dimensions, namely to "adjust them according to the highest sprite"
+                    // so that their bottom lines aligned
+                // in this case, the adjustmne twill be done manually
+                player_spr[1].move(0.0f, 6.0f);
+            }
+        }
+
+        void TestInit(sf::RenderWindow* mainWindow, sf::Sprite* background_spr) {
+            mainWindow_access.lock();
+            mainWindow->clear();
+            mainWindow->draw(*background_spr);
+            mainWindow->draw(player_spr[0]);
+            mainWindow->display();
+            mainWindow_access.unlock();
+            //std::this_thread::sleep_for(std::chrono::seconds(2));
+
+
+            //std::this_thread::sleep_for(std::chrono::seconds(2));
+            for(uint8_t idx {0}; idx < 255; idx++) {
+                if(terminate) { std::terminate(); }
+
+                player_spr[1].move(1.0f, 1.0f);
+                mainWindow_access.lock();
+                mainWindow->clear();
+                mainWindow->draw(*background_spr);
+                mainWindow->draw(player_spr[1]);
+                mainWindow->display();
+                mainWindow_access.unlock();
+                std::this_thread::sleep_for(std::chrono::milliseconds(80));
+            }
+
+        }
+
+
+        void SwitchSprite() {
+            current_player_sprite ^= 1;
+
+        }
+
+        void SetSpriteDirection(Player::SpriteDirection spriteDirection) {
+            sprite_direction = spriteDirection;
+            for(uint8_t idx_player {0}; idx_player < count_players; idx_player++) {
+                player_spr[idx_player].setTexture(player_tex_atlas[idx_player][sprite_direction]);
+            }
+        }
+        void RotateSprite(float degrees_360) {
+            for(uint8_t idx_player {0}; idx_player < count_players; idx_player++) {
+                player_spr[idx_player].rotate(degrees_360); // attention: clockwise rotation (!)
+            }
+        }
+
+        void MoveSprite(float x, float y) {
+            player_spr[current_player_sprite].move(x, y);
+        }
+
+        void AnimateAction(SpriteAction spriteAction) {
+            switch(spriteAction) {
+            case Attack:
+                break;
+            case Parry:
+                break;
+            case Jump:
+                break;
+            case Crouch:
+                break;
+            }
+        }
+
+        operator sf::Sprite& () {
+            return player_spr[current_player_sprite];
+        }
+    };
+
+    struct Obstacles {
+        // (*?) this should be a lattice / discrete map, with some parametrization, which can ease, "type casting
+            // abstraction" (this involves mapping from space to space, involving logic consistency and geometry and complexity and etc.),
+            // the abstraction inbetween [thus a bijective transformation / bidirectional (graph) path] an array of "state numerics" (preferably bools)
+            // and (an automatically generated sprite /) a sprite (which itself can be transformed back into an array of "state numberics")
+        // (*!?) it now becomes apparent that a collision algorithm's problem space has some complex topologies in some cases (such as corridors; there
+            // can be corridors through which the player sprite does not fit, for example)
+        // for now, consider the case where the step is equal to the sprite's dimensions, the sprite is a square and the "walls" are also cells of the
+            // same dimensions as the player sprite
+        uint8_t* grid {nullptr};
+        uint64_t count_cells {0};
+
+        sf::Image black_rect;   // (*?) I wish I could create a 28 x 28 rect with transparency pixels and some opaque pixels in the center,
+        sf::Image white_rect;   // but for now will import them from a file actually
+
+        inline static const char * file_pathname_black {"img/wall_block_black.png"};
+        inline static const char * file_pathname_white {"img/wall_block_white.png"};
+
+        sf::Texture drawable_texture;
+        sf::Sprite drawable_sprite;
+
+        Obstacles(uint32_t width, uint32_t height, uint8_t cell_edge_length) {
+            count_cells = width * height;
+            grid = new uint8_t[count_cells];
+
+                // perlin noise or something ? or a terrain-generation function
+                // but for now, using a generic pseudo-random generator
+                // (*?) actually, this would need to be a maze generator rather (well, it's the beginning for all sorts
+                    // of "biomes", each with its parametrization of functions with certain properties (such as "traverability"
+                    // or "existence of at least one path between two distinct `peripheral cells`", etc.)
+            std::mt19937 random;
+            for(uint64_t idx {0}; idx < count_cells; idx++) {
+                grid[idx] = random() % 2;
+            }
+
+            InitSprite(width, height, cell_edge_length);
+        }
+
+        void InitSprite(uint32_t width, uint32_t height, uint8_t cell_edge_length) {
+            printf("Debugging: Obstacles::InitSprite - function entry\n");
+
+            // for now, no textures will be loaded, but instead color-filled rects will be generated
+            black_rect.loadFromFile(file_pathname_black);
+            white_rect.loadFromFile(file_pathname_white);
+            printf("Debugging: Obstacles::InitSprite - loaded images\n");
+
+            drawable_texture.create(width, height);
+            printf("Debugging: Obstacles::InitSprite - width: %u, height: %u\n", width, height);
+
+            uint32_t x;
+            uint32_t y;
+
+            for(uint32_t idx_row {0}; idx_row < height; idx_row++) {
+                for(uint32_t idx_col {0}; idx_col < width; idx_col++) {
+                    x = idx_col * cell_edge_length;
+                    y = idx_row * cell_edge_length;
+
+                    if(grid[idx_row * width + idx_col]) {   // black
+                        drawable_texture.update(black_rect, x, y);
+                    } else {    // white
+                        drawable_texture.update(white_rect, x, y);
+                    }
+                }
+            }
+
+            printf("Debugging: Obstacles::InitSprite - function exit\n");
+        }
+
+        operator sf::Sprite& () {
+            return drawable_sprite;
+        }
+    };
+
+//    struct Player_v2 : public Player {  // (*?) use from the previously defined type, but overwrite some things; I wish one could also maybe remove things as well
+                                        // (*!?) the interesting thing here would be to make use of the type system / proof assistant in ~ "replacing and versioning
+                                        // types", such as in this case, adjusting struct Player for use with struct Wall, due to the need for square sprites; so the point
+                                        // here is to have assistance from the type system in "substituting the type, with another type, and maintain correctness to
+                                        // specifications" (well, "specifications" are really the "constraints" imposed by the actual usage of the type, such as it being
+                                        // called in some functions, members of it being accessed, functions of it and on it being called, etc.); still, there is a discussion
+                                        // to be had with all those "virtual members", which are a mechanism that is a little sort of "unrefined" and "insufficient"; the gist of
+                                        // the idea is to mark those things which are not desired from the original type and those things which are desired to be changed, and
+                                        // still have the type system proof assist the correctness, and report (helpful) errors for debugging and corrections of the implementation,
+                                        // as per the specifications / constraints (!?)
+                                        // (*?) basically, this sort of "refactoring" kind of thing seems to be a very important usage of the type system... (?) [discuss more on this]
+    struct Player_v2 {
+        // (*?) there will be only one sprite this time
+        inline static const char * player_image_file_pathname {"img/player3.png"};
+        inline static const uint8_t texture_edge_length {28};
+
+        inline static const uint8_t count_players {2};
+        inline static const uint8_t count_positions {1};
+
+        enum SpriteDirection {
+            Left = 0,
+            Right,
+            Up,
+            Down,
+        } sprite_direction { Left };
+
+        enum SpriteAction {
+            Attack = 0,
+            Parry,
+            Jump,
+            Crouch,
+        };
+
+        sf::Texture player_tex;
+        sf::Sprite player_spr;
+
+        uint16_t position[2] {0, 0};    // (*?) this other localization / coordinate system is what will be used for collision detection, at the moment
+        Obstacles* obstacles;
+
+    public:
+        // (*?) an interesting detail is that I do not have to write this; actually, I fear that writting this will result in the double execution
+            // of Init(); well, actually it also seems that the inherited constructor calls the previous version of Init();, and that is a problem (!?)
+            // which I think can only be solved by not inheriting... (?)
+
+        Player_v2() {
+            printf("Debuggin: Player_v2::Init() - function entry\n");
+
+            player_tex.loadFromFile(player_image_file_pathname);
+            player_spr.setTexture(player_tex);
+
+
+            obstacles = new Obstacles((mainWindow_width / texture_edge_length) * texture_edge_length, (mainWindow_height / texture_edge_length) * texture_edge_length, texture_edge_length);
+            printf("Debugging: Player_v2::Init() - function exit\n");
+        }
+
+//        ~Player_v2() {
+//            if(obstacles != nullptr)
+//                delete obstacles;
+//        }
+
+        // (*?) I was half-expecting this to be a redefinition error, but it isn't; why ? does this overwrite the previous definition in the inheritance ?
+        void Init() {
+        }
+
+        void MoveSprite(float x, float y) {
+            // (*?) irrespective of the input, it will only look at the signs and move "discretely",
+                // without having to change anything in the event loop itself, or the functions that
+                // generate the inputs, etc.
+            /// TD
+            /*
+                "discrete (map and step) collision detection"
+            */
+            if(x < 0.0f) {
+                player_spr.move(-texture_edge_length, 0.0f);
+            }
+            else if(x > 0.0f) {
+                player_spr.move(+texture_edge_length, 0.0f);
+            }
+
+            if(y < 0.0f) {
+                player_spr.move(0.0f, -texture_edge_length);
+            }
+            else if(y > 0.0f) {
+                player_spr.move(0.0f, +texture_edge_length);
+            }
+        }
+
+        void RotateSprite(float degrees_360) {
+            // (*?) functionality disabled
+            ;
+        }
+
+        void SwitchSprite() {
+            // disabled
+            ;
+        }
+
+        void SetSpriteDirection(Games::RPG::Player::SpriteDirection spriteDirection) {
+            ;
+        }
+
+        void AnimateAction(Games::RPG::Player::SpriteAction spriteAction) {
+            ;
+        }
+
+        operator sf::Sprite& () {
+            return player_spr;
+        }
+    };
+
+//    IntroWindow introWindow;
+//    Player player;
+    Player_v2 player;
+
+
+    // shared events ? multi-threading ?
+    RPG() { Init(); }
+
+    void Init() {
+        background_img.loadFromFile(background_image_file_pathname);
+        mainWindow_width = background_img.getSize().x;
+        mainWindow_height = background_img.getSize().y;
+        mainWindow.create(sf::VideoMode(mainWindow_width, mainWindow_height), mainWindow_title);
+
+        background_tex.create(background_img.getSize().x, background_img.getSize().y);
+        background_tex.loadFromImage(background_img);
+        background_spr.setTexture(background_tex);
+    }
+
+        // (*?) the multi-threading design of a loop will, for now, be modularized to being
+            // internal to the loop )that means it will not be integrated with the rest of the system
+        // so for one, there won't be "heterogeneous / general-purpose threads", only "specialized threads"
+    void EventLoop() {
+//        while(mainWindow.isOpen()) {
+            sf::Event event;
+            bool poll {false};
+
+            do {
+                mainWindow_access.lock();
+                poll = mainWindow.pollEvent(event);
+                mainWindow_access.unlock();
+
+                switch(event.type) {
+                    case sf::Event::Closed:
+                        mainWindow.close();
+                        break;
+                    case sf::Event::TextEntered:
+                        // event.text
+                        break;
+                    case sf::Event::KeyPressed:
+                    {   // event.key
+                    /// TD
+                    /*
+                        movement WASD + collision detection
+                        Escape - close current "menu" and go to mainWindow / current window
+                        Q to quit / window.close();
+                    */
+                        if(event.key.code == sf::Keyboard::Escape) { mainWindow.close(); }
+                        else {
+                        // (*?) ~ simultaneous directions allowed; the question is how to ensure the reading
+                            // of a stream of events in a time frame (?), since they seem to be read one by one
+                            // and trigger this logic -> using a frame-based, shared memory of ~ flags (?)
+                        // (*?) the multi-threaded evaluation of events
+
+                        // (*?) simultaneous multiple-keys being pressed (possibly by keeping a bool of their state, setting
+                        // it to true when pressed and to false when released, and the conditions for actions would be evaluated
+                        // based on those flags / bools
+                            // <e.g.> Shift + Direction -> run
+                        // (!?) actually, frame-rate needs to be considered in the simulator (I'd think of feeding-back
+                            // data from the renderer thread into the simulation threads, to adjust the functions that generate
+                            // the motions and ~ "synchronize" them to the renderer, or rathre the "user's" POV / "frame of reference")
+                            if(event.key.code == sf::Keyboard::A) { /* left */
+                                player.SetSpriteDirection(Player::SpriteDirection::Left);    // (*?) this is an utter failure; I had to disable inheritance
+                                            // due to the implicitly called constructor, and now am forced to (manually) change the code
+                                player.MoveSprite(-10.0f, 0.0f);
+                            }
+                            if(event.key.code == sf::Keyboard::D) { /* right */
+                                player.SetSpriteDirection(Player::SpriteDirection::Right);
+                                player.MoveSprite(+10.0f, 0.0f);
+                            }
+                            if(event.key.code == sf::Keyboard::W) { /* up */
+                                player.SetSpriteDirection(Player::SpriteDirection::Up);
+                                player.MoveSprite(0.0f, -10.0f);
+                            }
+                            if(event.key.code == sf::Keyboard::S) { /* down */
+                                player.SetSpriteDirection(Player::SpriteDirection::Down);
+                                player.MoveSprite(0.0f, +10.0f);
+                            }
+                            if(event.key.code == sf::Keyboard::Q) { /* down */
+                                player.RotateSprite(-15.0f);
+                            }
+                            if(event.key.code == sf::Keyboard::E) { /* down */
+                                player.RotateSprite(15.0f);
+                            }
+                            if(event.key.code == sf::Keyboard::Space) {
+                                player.AnimateAction(Player::SpriteAction::Jump);
+                            }
+                            if(event.key.code == sf::Keyboard::C) {
+                                player.AnimateAction(Player::SpriteAction::Crouch);
+                            }
+                            if(event.key.code == sf::Mouse::Left) {
+                                player.AnimateAction(Player::SpriteAction::Attack);
+                            }
+                            if(event.key.code == sf::Mouse::Right) {
+                                player.AnimateAction(Player::SpriteAction::Parry);
+                            }
+
+                            if(event.key.code == sf::Keyboard::P) { /* change sprite */
+                                player.SwitchSprite();  // (*?) notice how, for example, using struct Player_v2, this
+                                                        // function will not crash, but neither will it have any relevant side-effect (!?)
+                            }
+                        }
+                    }
+                        break;
+                    case sf::Event::KeyReleased:
+                        // event.key
+                        break;
+                    case sf::Event::LostFocus:
+                        // maybe stop rendering and only compute the "simulation frames"
+                        break;
+                    case sf::Event::GainedFocus:
+                       // maybe start rendering the simulation frames
+                        break;
+                    case sf::Event::MouseButtonPressed:
+                        // event.mouseButton
+                        break;
+                    case sf::Event::MouseButtonReleased:
+                        // same
+                        break;
+                    case sf::Event::MouseEntered:
+                        // ...
+                        break;
+                    case sf::Event::MouseLeft:
+                        // ...
+                        break;
+                    case sf::Event::MouseWheelScrolled:
+                        // event.mouseWheelScroll
+                        break;
+                    case sf::Event::MouseMoved:
+                        // event.mouseMove
+                        break;
+                    case sf::Event::Resized:
+                        // event.size
+                        break;
+                    default:
+                        break;
+                }
+            } while(poll);
+    }
+
+    void RenderLoop() {
+//        while(mainWindow.isOpen()) {
+            // re-render
+            // have a list of objects to be drawn, set in some order (be warry of the order in which items are
+                // put into the list
+            mainWindow.clear();
+            mainWindow.draw(background_spr);
+            mainWindow.draw(player);
+            mainWindow.display();
+    }
+
+    void Run() {
+        while(mainWindow.isOpen()) {
+            EventLoop();
+            RenderLoop();
+        }
+    // (*?) the simulation thread computes the elements of for the next frame and co-operates with the events thread,
+        // while the renderer thread renders the previous frame
+
+        // for now, this won't be used as it causes an error
+//        std::thread parallel_rendering (&Player::TestInit, player, &mainWindow, &background_spr);
+
+    // (*?) the usage of a thread for listening to events and another thread to render and compute things
+        // is likely one of the design choices which can generate ~ "frame-boundary effects";
+    // (*?) as such, it would be instead needed to design the "multi-threaded dynamics" such that ~ "critical points"
+        // be turned into "serial / single threaded dynamics"; so, identify which sub-spaces of the dynamics need single-threaded
+        // abstractions and which can work robustly with multi-threaded abstractions (!?)
+
+//        sf::Font font;
+//        font.loadFromFile("font/arial.ttf");
+//        sf::Text text;
+//        text.setFont(font);
+//        text.setString("Welcome to the main menu");
+//        text.setColor(sf::Color::White);
+//        text.setCharacterSize(100);
+//        sf::Vector2f text_position = text.getPosition();
+//        printf("text box position: x-%f y-%f\n", text_position.x, text_position.y);
+//        text.setPosition(100.0f, 100.0f);
+//        text.move
+//        mainWindow.draw(text);
+//        mainWindow.display();
+    }
+};
+
 };
 #endif // GAMES_HPP_INCLUDED

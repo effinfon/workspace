@@ -13,6 +13,15 @@
 //#include "Games.hpp"
 #include "SFML.hpp"
 #include "ChatNetwork.hpp"
+#include "Games.hpp"
+#include "Library.hpp"
+#include "Files.hpp"
+#include "Editor.hpp"
+#include "SFML_Utilitary.hpp"
+
+void LimitedLifetime() {
+    Editor editor;
+}
 
 int main(int argc, char** argv) {
 // test OpenGL
@@ -104,7 +113,7 @@ int main(int argc, char** argv) {
 //    life1.TerminalPrint();
 
 /// TD
-    SFML::main();
+//    SFML::main();
 
 /// TD
 //    Chat::Server server;
@@ -114,6 +123,15 @@ int main(int argc, char** argv) {
 //    Chat::Client client2;
 //    client2.Connect("localhost", 12345);
 //    client1.Run();
+
+/// TD
+//    Games::RPG rpg;
+//    rpg.Run();
+
+/// TD
+    Editor editor;
+//    LimitedLifetime();
+//    std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 

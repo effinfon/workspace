@@ -3,7 +3,7 @@
 
 /// TD
 /*
-    an itnernal call stack -> each function call registers itself in a stack, which also gets logged
+    an internal call stack -> each function call registers itself in a stack, which also gets logged
         // into a file (including the arguments in the function call)
     assembler-disassembler (!?) -> given a list of all known machine instructions, convert any binary sequence
         // into assembly instructions (disassembly) and vice-versa (assembly)

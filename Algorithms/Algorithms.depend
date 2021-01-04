@@ -113,12 +113,17 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1609243113 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1609764710 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
 	"SFML.hpp"
 	"ChatNetwork.hpp"
+	"Games.hpp"
+	"Library.hpp"
+	"Files.hpp"
+	"Editor.hpp"
+	"SFML_Utilitary.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
 	"Search.hpp"
@@ -154,7 +159,7 @@
 	<fstream>
 	"CollectionTypes.hpp"
 
-1608224674 /home/nq/codeblocks/workspace/Algorithms/CollectionTypes.hpp
+1609399031 /home/nq/codeblocks/workspace/Algorithms/CollectionTypes.hpp
 
 1608122286 /home/nq/codeblocks/workspace/Algorithms/OpenGL.hpp
 	<GL/glew.h>
@@ -284,9 +289,16 @@
 
 1609091562 /home/nq/codeblocks/workspace/Algorithms/Decomposition.hpp
 
-1609147422 /home/nq/codeblocks/workspace/Algorithms/Games.hpp
+1609764465 /home/nq/codeblocks/workspace/Algorithms/Games.hpp
+	<SFML/Graphics.hpp>
+	<SFML/Network.hpp>
+	<SFML/Audio.hpp>
+	<thread>
+	<chrono>
+	<mutex>
+	<random>
 
-1609243461 /home/nq/codeblocks/workspace/Algorithms/SFML.hpp
+1609264600 /home/nq/codeblocks/workspace/Algorithms/SFML.hpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 	<SFML/Network.hpp>
@@ -295,6 +307,7 @@
 	<SFML/OpenGL.hpp>
 	<string>
 	<algorithm>
+	<filesystem>
 
 1609242974 /home/nq/codeblocks/workspace/Algorithms/ChatNetwork.hpp
 	<SFML/Network.hpp>
@@ -305,4 +318,28 @@
 	<vector>
 	<thread>
 	<chrono>
+
+1609409011 /home/nq/codeblocks/workspace/Algorithms/Library.hpp
+	<filesystem>
+	<string>
+	<fstream>
+
+1609753673 /home/nq/codeblocks/workspace/Algorithms/Files.hpp
+	<string>
+	<filesystem>
+	<fstream>
+	"CollectionTypes.hpp"
+
+1609772971 /home/nq/codeblocks/workspace/Algorithms/Editor.hpp
+	<SFML/Graphics.hpp>
+	<string>
+	<vector>
+	<thread>
+	<filesystem>
+	"SFML_Utilitary.hpp"
+
+1609765117 /home/nq/codeblocks/workspace/Algorithms/SFML_Utilitary.hpp
+	<SFML/Graphics.hpp>
+	<map>
+	<vector>
 

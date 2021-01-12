@@ -113,17 +113,12 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1609764710 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1610205865 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
-	"SFML.hpp"
-	"ChatNetwork.hpp"
-	"Games.hpp"
-	"Library.hpp"
-	"Files.hpp"
-	"Editor.hpp"
-	"SFML_Utilitary.hpp"
+	"TreeDTS.hpp"
+	"QueueDTS.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
 	"Search.hpp"
@@ -170,7 +165,7 @@
 	<SDL2/SDL.h>
 	<stdio.h>
 
-1609227750 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
+1610039545 source:/home/nq/codeblocks/workspace/Algorithms/triangle.cpp
 	<cstdlib>
 	<stdio.h>
 	<iostream>
@@ -180,7 +175,7 @@
 	<GL/glew.h>
 	<SDL2/SDL.h>
 
-1608135856 /home/nq/codeblocks/workspace/Algorithms/triangle.hpp
+1610039545 /home/nq/codeblocks/workspace/Algorithms/triangle.hpp
 
 1609227737 /home/nq/codeblocks/workspace/Algorithms/Assets.hpp
 	<GL/glew.h>
@@ -203,7 +198,7 @@
 	<string>
 	<vector>
 
-1608225470 /home/nq/codeblocks/workspace/Algorithms/MeasureUnits.hpp
+1609775746 /home/nq/codeblocks/workspace/Algorithms/MeasureUnits.hpp
 
 1608226984 /home/nq/codeblocks/workspace/Algorithms/NumberTheory.hpp
 	<iostream>
@@ -218,7 +213,7 @@
 1608237822 source:/home/nq/codeblocks/workspace/Algorithms/FileLoaderBMP.cpp
 	"FileLoaderBMP.hpp"
 
-1608237637 source:/home/nq/codeblocks/workspace/Algorithms/Assets.cpp
+1610039258 source:/home/nq/codeblocks/workspace/Algorithms/Assets.cpp
 	"Assets.hpp"
 
 1608458755 /home/nq/codeblocks/workspace/Algorithms/VAO_VBO.hpp
@@ -247,16 +242,17 @@
 	<filesystem>
 	<fstream>
 
-1608895338 /home/nq/codeblocks/workspace/Algorithms/Prime.hpp
+1609845837 /home/nq/codeblocks/workspace/Algorithms/Prime.hpp
 	<pthread.h>
 
-1608894041 /home/nq/codeblocks/workspace/Algorithms/Dts.hpp
-	<algorithm>
+1610019390 /home/nq/codeblocks/workspace/Algorithms/Dts.hpp
+	<unordered_map>
+	<unordered_set>
 
 1608879963 /home/nq/codeblocks/workspace/Algorithms/KinematicEngine.hpp
 	<math.h>
 
-1608926706 /home/nq/codeblocks/workspace/Algorithms/MultiThreaded.hpp
+1609880668 /home/nq/codeblocks/workspace/Algorithms/MultiThreaded.hpp
 	<iostream>
 	<future>
 	<thread>
@@ -264,6 +260,7 @@
 	<vector>
 	<ctime>
 	<mutex>
+	<SFML/Graphics.hpp>
 	"Prime.hpp"
 
 1608929107 /home/nq/codeblocks/workspace/Algorithms/Async.hpp
@@ -330,7 +327,7 @@
 	<fstream>
 	"CollectionTypes.hpp"
 
-1609772971 /home/nq/codeblocks/workspace/Algorithms/Editor.hpp
+1609879590 /home/nq/codeblocks/workspace/Algorithms/Editor.hpp
 	<SFML/Graphics.hpp>
 	<string>
 	<vector>
@@ -342,4 +339,362 @@
 	<SFML/Graphics.hpp>
 	<map>
 	<vector>
+
+1609945247 /home/nq/codeblocks/workspace/Algorithms/LabWork.hpp
+	<vector>
+	<math.h>
+	<random>
+
+1609929105 /home/nq/codeblocks/workspace/Algorithms/Hash.hpp
+	<iostream>
+	<iomanip>
+	<x86intrin.h>
+	<x86intrin.h>
+
+1610121578 /home/nq/codeblocks/workspace/Algorithms/TreeDTS.hpp
+	<iostream>
+	<math.h>
+	<stdlib.h>
+	<sstream>
+	<string>
+	<iostream>
+	<iostream>
+	<iostream>
+	<iostream>
+	<iostream>
+	<string>
+	<vector>
+	<map>
+	<stdexcept>
+	<fstream>
+	<sstream>
+	<iostream>
+	<new>
+	<cassert>
+	<iostream>
+	<iostream>
+	<iostream>
+	<iostream>
+	<fstream>
+
+1610045584 /home/nq/codeblocks/workspace/Algorithms/IDE.hpp
+	<sstream>
+	<string>
+	<vector>
+	<filesystem>
+	<fstream>
+	<algorithm>
+	<iostream>
+	"Parser.hpp"
+
+1609280340 /home/nq/codeblocks/workspace/Algorithms/Parser.hpp
+
+1608066845 source:/home/nq/codeblocks/workspace/Algorithms/RingBuffer.cpp
+	"RingBuffer.hpp"
+
+1608066845 /home/nq/codeblocks/workspace/Algorithms/RingBuffer.hpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/bits/mask_the_bits.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/int_min_priority_queue.cpp
+	<iostream>
+	<queue>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/list.cpp
+	<iostream>
+	<list>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/list_reverse_iterator.cpp
+	<iostream>
+	<list>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/pair_min_priority_queue.cpp
+	<iostream>
+	<queue>
+	<utility>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/priority_queue.cpp
+	<iostream>
+	<queue>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/stack.cpp
+	<iostream>
+	<stack>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/unordered_maps.cpp
+	<iostream>
+	<unordered_map>
+	<string>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/vector.cpp
+	<vector>
+	<iostream>
+	<string>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/c++/vector_imp_resisize_pushback.cpp
+	<vector>
+	<iostream>
+	<string>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Convert_Array_to_Min_Heap/main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/DataStructures/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Hashing_With_Chains/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+	<list>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Merge_Tables/main.cpp
+	<cstdio>
+	<cstdlib>
+	<vector>
+	<algorithm>
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Network_Packet_Simulation/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Parallel_Processing/main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+	<queue>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Phone_Book_Manager/main.cpp
+	<iostream>
+	<vector>
+	<string>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Robin_Karp_Finding_Pattern/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<cmath>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DataStructures/Valid_Parenthesis/main.cpp
+	<iostream>
+	<string>
+	<stack>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Divide_and_Conquere/3-way_Quick_sort/main.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Divide_and_Conquere/binary_search/main.cpp
+	<iostream>
+	<cassert>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Divide_and_Conquere/divide_and_conquere/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Divide_and_Conquere/find_majority_element/main.cpp
+	<algorithm>
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Divide_and_Conquere/NUmber_of_Inversions/main.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DS/array/alternating_positive_negative.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DS/array/maximu_sum_path.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DS/BSTree.cpp
+	<vector>
+	<iostream>
+	<string>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DS/doubly_linked_list.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DS/singly_linked_list.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/DS/valid.cpp
+	<iostream>
+	<string>
+	<stack>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Dynamic_Programming/main.cpp
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Edit_Distance_Between_Two_Strings/main.cpp
+	<iostream>
+	<string>
+	<vector>
+	<algorithm>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Knapsack_With_Repetition/main.cpp
+	<iostream>
+	<vector>
+	<climits>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Knapsack_Without_Repetition/main.cpp
+	<iostream>
+	<vector>
+	<cmath>
+	<algorithm>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/longest-pallindrome_substring.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Longest_Common_Subsequence/main.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Longest_Common_Subsequence_3/main.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/longest_increasing_subsequence.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/longest_pallindromic_subsequence.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/minimum_number_of_jumps.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/Minimum_number_of_operations/main.cpp
+	<iostream>
+	<vector>
+	<algorithm>
+	<climits>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/dynamic_programming/tota_number_of_BSTs.cpp
+	<iostream>
+	<vector>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/graph/bfs.cpp
+	<iostream>
+	<list>
+	<queue>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/linked_list/list_in_place_replacement.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/linked_list/LRUCache.cpp
+	<iostream>
+	<vector>
+	<map>
+	<string>
+	<algorithm>
+	<set>
+	<cassert>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/linked_list/reversing_in_pairs_list.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/linked_list/reversing_singly_linked_list.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/all_prime_factors/main.cpp
+	<iostream>
+	<cmath>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/check_relative_prime/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/count_rectangles_in_grid/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/find_all_factors/main.cpp
+	<iostream>
+	<cmath>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/is_prime/main.cpp
+	<iostream>
+	<cmath>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/largest_prime_factor/main.cpp
+	<iostream>
+	<cmath>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/LCM_and_GCD/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/Mathematical Computation/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/multiple_3_and_5/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/Next_Permutation/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/recurring_cycle_decimal fraction part./main.cpp
+	<iostream>
+	<unordered_map>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/Mathematical Computation/smallest_multiple_of_multiple_numbers/main.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/oopd/card_class.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/recursion/allCombOfParenthesis.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/recursion/robot_navigation.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/recursion/subsetofset.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/sorting/heap_sort.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/sorting/merge_sort.cpp
+	<iostream>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/sorting/quick_sort.cpp
+	<iostream>
+
+1610091266 source:/home/nq/git/AlgorithmsAndDataStructures/recursion/permutation.cpp
+	<iostream>
+	<string>
+	<cstring>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/strings/remove_a_bc_string.cpp
+	<iostream>
+	<list>
+
+1610034266 source:/home/nq/git/AlgorithmsAndDataStructures/strings/string1-1.cpp
+	<iostream>
+
+1610205568 /home/nq/codeblocks/workspace/Algorithms/QueueDTS.hpp
+	<iostream>
+	<cstring>
+	<iostream>
+	<iostream>
+	<iostream>
+	<array>
+	<cstdlib>
+	<atomic>
+	<thread>
+	<chrono>
+	<iostream>
+	<iostream>
+	<iostream>
+	<iostream>
+	<Arduino.h>
+	<iostream>
+	<string>
+	<cstdlib>
+	<iostream>
 

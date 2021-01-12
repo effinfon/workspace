@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1610006830 source:/home/nq/codeblocks/workspace/Graphs/Graph.cpp
+	"Graph.h"
+	<algorithm>
+	<iostream>
+	<sstream>
+	<fstream>
+	<limits>
+	<queue>
+
+1609964690 /home/nq/codeblocks/workspace/Graphs/Graph.h
+	"Node.h"
+	<vector>
+	<utility>
+	<tuple>
+
+1609964690 /home/nq/codeblocks/workspace/Graphs/Node.h
+	<string>
+	<unordered_map>
+	<unordered_set>
+	<set>
+
+1609964690 source:/home/nq/codeblocks/workspace/Graphs/main.cpp
+	"Graph.h"
+	<iostream>
+	<fstream>
+	<string>
+
+1610006789 source:/home/nq/codeblocks/workspace/Graphs/Node.cpp
+	"Node.h"
+	<utility>
+

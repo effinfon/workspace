@@ -14,6 +14,31 @@
     // specification of a function with parameters either from value-types or reference-types; I do not want to
         // have to rewrite effectively the same code
 
+
+/// TD
+/*  POSSIBLE FUNCTIONALITY
+
+    for each node, compute the shortest path from it to any other node (basically, to compute a sort of "map of shortest paths")
+    find all unique cycles in the graph
+    find the path(s ?) with the distance that has the property: longest, shortest, closest to an arbitrary value
+    find all "islands" (usually there's only one...sad)
+    sort edges -. ~ adjacency matrix; (*?) but how to design (as a matrix model) a graph with (possibly) multiple edges between the same nodes (?)
+        // I guess, simply store a ~ "tuple" in their dot product (?) => for matrix multiplication, the logic needs to be able to handle this
+
+*/
+/*
+
+    essentially, a graph does not require a struct Node, if there is no data pertaining to it; all that is needed are the edges, which
+        hold relations (or rather a "connection") between two indices < number of nodes (there is no need to effectively store any nodes,
+        just this ~ mapping);
+    (*?) now, a graph seen as simply the abstraction for "connectivity" -> one can do isomorphism searches and checks, ?? etc.
+*/
+/*
+
+    (*?) find the number of unique paths that can exist from a given node; find, count and enumerate the "branching points"; get the lengths of those paths;
+        include as unique paths the root->branching point paths as well (?); ?? etc.
+*/
+
 struct AdjacencyMatrix {
     uint32_t number_of_nodes {0};
     uint8_t ** table {nullptr};

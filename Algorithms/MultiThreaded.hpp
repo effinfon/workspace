@@ -16,6 +16,8 @@
 //#include <sstream>
 #include <mutex>
 
+#include <SFML/Graphics.hpp>
+
 #include "Prime.hpp"
 
 /// TD
@@ -236,5 +238,24 @@ void testPlayground3(uint64_t start, uint64_t end, uint64_t numThreads) {
     std::cout << "Time elapsed: " << (timeEnd - timeEnd) << "\n";
     std::cout << "Primes found: " << primeVect.size() << "\n";
 }
+};
+
+namespace SFMLMultiThreading {
+    // (*?) the baseline seems to be that before burrowing, one needs to "deactivate the context" of a thread (apparently each thread has its own OpenGL context ?)
+    // (*?) also, it seems that whenever something is done to sf::RenderWindow on a (different) thread, it implicitly activates the OpenGL context for that thread
+
+    void CloseWindow(sf::RenderWindow* window) {
+        window->close();
+        window->setActive(false);
+    }
+
+    void test1() {
+        sf::RenderWindow window;
+        window.create(sf::VideoMode(120, 120), "Title");
+        window.setActive(false);
+        sf::Thread thread = sf::Thread(CloseWindow, &window);
+        thread.launch();    // (*?) I would bet that this is somehow just a wrapper of sorts for std::Thread (?)
+    }
+
 };
 #endif // MULTITHREADED_HPP_INCLUDED

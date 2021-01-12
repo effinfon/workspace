@@ -1,0 +1,264 @@
+template <typename T> * template<type_properties ...>
+struct node {
+	/// _v1
+	T value {};
+	node* left {nullptr}, right {nullptr};
+
+	/// _v2
+	T data {};	// (*!?) "0 initialized" vs "T() initialized"
+	Node* left {nullptr}, right {nullptr}	
+
+	/// _v2 extra
+	// (*?) "node in node" / ~ "substructure" / "internal structure"
+};
+
+template<typename T> -> template programming's own inheritance mechanism
+struct btree {
+	/// _v1
+	node* root {nullptr};
+
+	void insert(T value) {}
+	
+	void insert(T value, node* node) {}
+	void overwrite(T value, node* node) {}
+	void replace(T, node*) {}
+
+	node* search(T value) {}
+	// (*?) an index "index space" and a pointer "index space";
+	node* search(T value, node* leaf) {}
+
+	void destroy_tree() {}
+	void destroy_subtree(node* sub_root) {}
+	static void destroy_tree(node* root) {}
+	void deallocate_tree() {}
+	void void remove_tree() {}
+
+	void inorder_print() {}
+	void inorder_print(node* leaf) {}
+	
+	void postorder_print() {}
+	void postorder_print(node* leaf) {}
+
+	void preorder_print() {}
+	void preorder_print(node* leaf( {}
+	
+	btree() {}
+	~btree() { destroy_tree(); }	// (*?) argue: caller needs to ensure safety; that way, the algorithm itself
+					// can be more specialized;
+					// (*?) modularity: have a "safety function" which gets called before the
+					// "specialized function" -> integration: automatic, by the compiler
+	/// _v1 extra
+	node* predecessor(T value) {}
+	node* successor(T value) {}
+	node* floor(T value) {}
+	node* ceiling(T value) {}
+	node* getMax(node* leaf) {}
+	node* getMin(node* leaf( {}
+	
+	/// _v2
+	Node* root {nullptr};
+	BinaryTree() : root(nullptr) {}
+	
+	bool isEmpty() {}
+	void insert(T item) {}
+	node* getRoot() {} 	// (*?) useful for dubly-linked btree
+	
+	/// _v3
+	// (*?) note the "memory instance syntaxes" -> "variable" <e.g.> "node* root;", "function" <e.g.> "node* find(...);"
+private:
+	node* root;
+	node* find(node*, int);
+	node* findMin(node*);
+	node* findMax(node*);
+	node* remove(node*, int);
+	void insert(node*, int);
+	void destroyTree(node*);
+	void inOrder(node*);
+	void preOrder(node*);
+	void postOrder(node*);
+	void levelOrder(node*);
+	bool isLeafNode(node*);
+public:
+	BST();
+	~BST();
+	void insert(int);	// (*?) Node.insert() vs BST.insert()
+	void destroyTree();	// (*?) the idea of "public variant that doesn't expose the internal structure"; this stems from (or at least also has the effects of) modularity; as it is, it doesn't lend itself to code reusability at the level of abstractions... there are many functions which could simply execute the same code as a getRoot() does, which is basically just to jump pointers (it's more the stack structure that might vary than anything else; even so, functions might be globally searched for to partially overlap their stack frames; some calls can then reuse the same function, even if they are objects of different types, or ?? etc. ?!) 
+	void display();
+	node* remove(int);
+	node* find(int);
+	node* getRoot();
+	int maxdepth();
+
+	/// _v3 extra
+	uint getHeight(node* root, node* leaf);
+	uint getDepth(node* root, node* leaf);
+	uint minDepth(node* root);
+	uint maxDepth(node* root);
+
+	uint getDistance(node* root, node* leaf);
+	uint getDistance(node* leafA, node* leafB);	// (*?) maybe they are from different sides / branches
+
+	// (*!?) more exercise / patterns for the property of "distance" on the dts of btree	
+	
+	bool isComplete();
+	bool isFull();
+	bool isPerfect();
+	bool isBalanced();
+
+	uint countAllNodes();	// "self-inclusive", if self != nullptr
+	uint countLeftNodes(node*);
+	uint countRightNodes(node*);
+
+	(node*, uint) getAllLeaves(node* root);
+
+	// (*!?) then there seem to be combinatoric problems related to binary trees
+	
+	// (*!?) also maze constructions
+
+	// (*!?) also arithmetic trees and algrebraic trees
+
+	// (*!?) space division problems, lattice partitioning, octaspace, etc.
+		// dynamic depth binary trees (based on whether there are items in the corresponding subspace or not
+		// collision detection, etc.
+	
+	// (*?!) get left subtree (< / <=) or right subtree (> / >=) as an array [actually, those comparators need not hold
+	// because the tree might not be sorted
+
+	// (*!?) partial sortings (!) <e.g.> "sorted up to depth ... with possible global changes", " sorted up to depth ... with guaranteed no global changes" [meaning that changes can only occur from a certain depth, towards depper, but not towards the root]
+	// etc. patterns
+
+	// (*!?) drawing btree <e.g.> hereditary, maze, for sorted data or data in general, for iterations, for recursive btree, "upwards depth" or "downwards depth", bidirectional tree (not necessarely all nodes, <e.g.> threaded btree, ?? etc.)
+	// "graph-like btree" (meaning that it's treated like a graph essentially, and no node has more than 2 children nodes; multiple btrees can be drawn in the same graph, then they can be "combined" in different ways and new tree kinds emerge, or graphs)	
+	// (!?) when drawing, for a "aspect-consistent" tree (when the btree is sorted) make sure that the nodes have their x coordinate (or whatever) "aligned to the ordering of a number axis"
+
+	// (*?) "decision making" / "control flow" applications of btree (multi-tree)
+
+	// (*?) more applications: huffmann coding, grey coding, 
+
+	// (*?) ~ octatree / space partitioning -> ~ PCA (principal component analysis) (!?)
+
+	// (*?) btree to 2-3 tree -> this is effectively like ~ "concatenating subtrees on the same layer, by ~ gluing them together"
+
+	// (*?) considerations about the cache friendliness of btree and the underlying storage method
+		// as an exercise: btree <-> reallocating array (the "count function" would be the 2^(depth + 1) - 1, thus from this derive the scaling function ~ (((prev + 1) * 2) - 1) or (prev_size * 2 + 1)]
+			// (*?) after having the allocation done, then there are multiple mapping functions between the two, and suddenly the tree can be parsed in two ways [by way of the "node space" and by way of the "array space", (!?) which are actually in turn defined by the specifics of the mapping function(s)]
+			// (*?) the "array space" corresponding to the DTS will be the abstraction in terms of which the cache friendliness of the DTS can be analyzed, for a specific set of machines (most of today's processors which use cachelines, basically)
+
+	// (*?) could btree be used for scheduling problems ? I'd think of rather using "overlapping slides, structured in layers" (?)
+		// I mean, how would one represent both the start time and the end time of an event, but in a btree ?
+
+	// (*?) terminal print btree: up-down line-by-line (or layer-by-layer), left-right column-by-column, ?? etc.
+
+	// (*?) enumerators: paths root <-> leaves, ?? etc.
+};
+
+/**
+	_v1
+*/
+
+/// IMPLEMENTATIONS: I want "proofs of correctness" (*!?)
+	// ~ "proof that every possible case on the layer has been considered and handled"
+	// ~ "proof that the iteration converges towards the specified point"
+	// ~ ...
+
+destroy_tree(node* leaf) {
+	if(leaf != nullptr) {
+		destroy_tree(leaf->left);
+		destroy_tree(leaf->right);
+		delete leaf;
+	}
+}
+
+	// (*?) duplicate handling: this tree is (<, >=) [this means that == / duplicates are inserted to the right,
+		// in the order they appear in
+insert(T value, node* leaf) {
+	if(value < leaf->value) {	// <
+		if(leaf->left != nullptr) { insert(value, leaf->left); }
+		else { leaf->left = new node(value); }
+	} else {	// >=
+		if(leaf->right != nullptr) { insert(value, leaf->right); }
+		else { leaft->right = new node(value); }
+	}
+}
+
+insert(T value) {
+	if(root != nullptr) { insert(value, root); }
+	else { root = new node(value); }
+}
+
+search(T value, node* leaf) {
+	if(leaf != nullptr) {
+		if(value == leaf-> value) { return leaf; }
+		else if(value < leaf->value) { return search(value, leaf->left); }	// these can call upon nodes that are nullptr
+		else { return search(value, leaf->right); }				// and that signifies "not found"
+	} else { return nullptr; }	// (!*?) this is a difference from the index "index space"; but nullptr is not
+					// "universally recognized", right ? and in essence, it's just 0x0
+}
+
+search(T value) {
+	if(root != nullptr) { return search(value, root); }
+	else { return nullptr; }
+}
+
+
+///// Iteration pattern exercises -> search patterns, (more performantly / efficiently) befitting different properties
+/// more of these are needed, and their equivalent on the array
+/// parse arrays as if they were binary trees, and binary-trees as if they were arrays
+/// then the same with arrays, matrices, binary trees
+// inversions of left and right -> symmetries in parsing binary trees
+/// (*!?) visualization software: array, btree, matrix, etc.
+
+inorder_print(node* leaf) {	// effectively from smallest to largest, as if this were the underlying sorted array from left to right
+	if(leaf != nullptr) {
+		inorder_print(leaf->value);
+		printf("%<T>\n", leaf->value);
+		inorder_print(leaf->right);
+	}
+}
+
+postorder_print(node* leaf) {	// seems to be "from left to right, ~ layer by layer", or "merging V up, splitting V down and the top is last"
+	if(leaf != nullptr) {
+		postorder_print(leaf->left);
+		postorder_print(leaf->right);
+		printf("%<T>\n", leaf->value);
+	}
+}
+
+preorder_print(node* leaf) {
+	if(leaf != nullptr) {
+		printf("%<T>\n", leaf->value);
+		preorder_print(leaf->left);
+		preorder_print(leaf->right);
+	}
+}
+
+
+/**
+	_v2
+*/
+
+isEmpty() {
+	return root == nullptr;
+}
+
+insert(T item) 
+{
+	Node* newbie = new Node(item);
+	Node* parent = nullptr; 
+	if(isEmpty()) { root = newbie; }
+	else {
+		Node* ptr = root;
+		while (ptr != nullptr) {
+			parent = ptr;
+			if(item > ptr->data) { ptr = ptr->right; }
+			else if(item < ptr->data) { ptr = ptr-> left; }
+			else { printf("Duplicate case\n"); }
+		}
+
+		if(item > parent->data) { parent->right = newbie; }
+		else if(item < parent->data) { parent->left = newbie; }
+	}
+}
+
+
+

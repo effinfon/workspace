@@ -14,7 +14,7 @@
         can be set in any one of these and they all need to work together
     indicate lines that have been executed in the current scope by highlighting them (say, with yellow), so that it is intuitive
         to figure out whether the arrow at the beginning of a line signifies a line that "is about to be executed" (thus not yet executed !)
-
+    (*?) debugging symbols,
 */
 
 #endif // DEBUGGER_HPP_INCLUDED

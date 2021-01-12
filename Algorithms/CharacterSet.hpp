@@ -10,6 +10,8 @@
         <e.g.> if I want to be able to write a full blown sentence as an identifier, I want to be able to (!), and have it be properly delimited
         <e.g.> use delimiters such as to be able to well-specify what the function / type / ?? of an entity is and for this to suffice to only look locally [especially
             // for parallelism; but there is one more thing: make it similar to a cellular automaton, to biological cells; make code be similar to those things (*!?)]
+*/
+/*
 
 */
 

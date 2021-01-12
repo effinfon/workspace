@@ -1,7 +1,16 @@
 #ifndef IDE_HPP_INCLUDED
 #define IDE_HPP_INCLUDED
 
-#include "Codeblocks"
+#include <sstream>
+#include <string>
+#include <vector>
+#include <filesystem>
+#include <fstream>
+#include <algorithm>
+#include <iostream>
+namespace fs = std::filesystem;
+
+#include "Parser.hpp"
 
 /// TD
 /*
@@ -47,4 +56,143 @@
 
     ...
 */
+/*  SEARCH MECHANISMS
+
+    to be able to search in all:
+        // open files
+        // project files
+        // recursively through all includes (!?) <e.g.> I tried finding where "rotl" was implemented or at least defined, but it was (maybe) burried somewhere in the includes
+*/
+
+namespace IDE {
+std::string AddFileToCodeblocksProject(fs::path pathFilename) {
+    std::string result {"\t\t<Unit filename=\""};
+    result += pathFilename;
+    result += "\" />\n";
+
+    return result;
+}
+
+fs::path GetRelativePathDistance(fs::path currentDirectory, fs::path destinationDirectory) {
+    // for Codeblocks
+}
+
+// (*?) could add file-filters here, such as *.hpp *.cpp *.h *.c etc.
+std::vector<fs::path> GetFiles(bool recursively, fs::path path) {
+    if(fs::is_directory(path)) {
+        std::filesystem::directory_iterator it {path};
+
+        std::vector<fs::path> files;
+        for(auto& filename : it) {
+            if(fs::is_regular_file(filename)) {
+
+                files.push_back(filename);
+                std::cout << "Added file " << filename << "\n";
+            }
+
+            else if(recursively && fs::is_directory(filename)) {
+            std::cout << "Found directory " << filename << "\n";
+            std::vector<fs::path> recursive_files = GetFiles(recursively, filename);
+            files.insert(files.end(), recursive_files.begin(), recursive_files.end());
+        }   }
+
+        return files;
+    }
+}
+
+    // (*?) "start character match" -> "matchedness, sequential iterator"
+uint64_t FindString(std::string pattern, std::vector<std::string> lines) {
+    printf("Looking for pattern %s\nThe input has %lu lines\n", pattern.c_str(), lines.size());
+    uint64_t count_loops {0};
+
+    for(uint64_t idx_line {0}; idx_line < lines.size(); idx_line++) {
+//        printf("count: %lu, ", count_loops++);
+        for(uint64_t idx_start_col {0}; lines[idx_line].size() >= pattern.size() &&
+                                        idx_start_col < lines[idx_line].size() - (pattern.size() - 1); idx_start_col++) {
+//            printf("count: %lu, ", count_loops++);
+
+            // (*?) "if for()" control structure ?
+            bool match {true};
+
+            for(uint64_t idx_col {0}; idx_col < pattern.size(); idx_col++) {
+//                printf("count: %lu, ", count_loops++);
+                if(pattern[idx_col] != lines[idx_line][idx_start_col + idx_col]) { match = false; break; }
+            }
+
+            if(match) return idx_line;
+        }
+    }
+
+    return uint64_t(-1);
+}
+
+    // preferably absolute addresses for now
+    // (*?) at some point, an abstraction that "contextually differentiates between relative and absolute addresses" (the context is in the string !)
+    // (*!?) I want to be able to modify directly in the file... or would that be bad for the hardware ? was it purposely done this way such as to avoid
+        // the reduced transmission of IO to HDD ? what about "direct file editing" for "parts" of it (?!) [granularity: maybe a row ? a line ? a paragraph ?; I don't
+        // think there is a "row" in the context of a file... a "row" exists when rendering text... (*?)]
+void AddFileToProject(std::string project_path_filename, std::vector<fs::path> files_to_add) {
+    for(uint64_t idx {0}; idx < files_to_add.size(); idx++) {
+        printf("File to be added: %s\n", files_to_add[idx].c_str());
+    }
+
+    // read it
+    ifstream project_file_read {project_path_filename};
+    if(!project_file_read.is_open()) { printf("File %s not found\n", project_path_filename.c_str()); return; }
+
+    std::vector<std::string> read_whole_file {};
+    std::string line {};
+    while(std::getline(project_file_read, line)) {
+//        std::string temp = *(new std::string(line));  // (*?) what does this actually do ?
+        std::string temp = *(new std::string(line));
+        temp += "\n";
+        read_whole_file.push_back(temp);
+        printf("Reading: %s", temp.c_str());
+    }
+    project_file_read.close();
+
+    static std::string match {"<Extensions />"};
+    uint64_t line_index = FindString(match, read_whole_file);
+    printf("Found a string match at line number %lu\n", line_index);
+
+    std::vector<std::string> reserve {};
+    for(uint64_t idx {line_index}; idx < read_whole_file.size(); idx++) {
+        printf("Reserving: %s\n", read_whole_file[idx].c_str());
+        reserve.push_back(*(new std::string(read_whole_file[idx])));
+    }
+
+    // (*?) I suppose that ways in which an iterator can be different from a raw pointer, especially for std::vector<T> which is a reallocating array,
+        // is that it has to abstract the reallocation of the array... right ? I hope so...
+//    uint64_t idx {0};
+//    for(; idx < files_to_add.size() && it2 != read_whole_file.end(); idx++, it2++) {
+//        *it2 = AddFileToCodeblocksProject(files_to_add[idx]);
+//
+
+    if(line_index != uint64_t(-1) && line_index > 0) {
+        read_whole_file.resize(line_index - 1);
+    }
+
+    for(uint64_t idx {0}; idx < files_to_add.size(); idx++) {
+        uint64_t index = FindString(files_to_add[idx], read_whole_file);
+        if(index == uint64_t(-1)) {
+            std::string allocated = *(new std::string(AddFileToCodeblocksProject(files_to_add[idx])));
+            printf("At index %lu, adding file: %s\n", line_index + idx, allocated.c_str());
+            read_whole_file.push_back(allocated);
+        }
+    }
+    for(auto& line : reserve) {
+        printf("At index %lu, adding file: %s\n", read_whole_file.size(), line.c_str());
+        read_whole_file.push_back(*(new std::string(line)));
+//        read_whole_file.push_back(line);
+    }
+    // output it
+    ofstream project_file_write {project_path_filename};
+        // (*?) beware: this is a case of information loss (!)
+    if(!project_file_write.is_open()) { printf("Cannot write to file %s.\n", project_path_filename.c_str()); return; }
+    for(auto& line : read_whole_file) {
+        project_file_write << line;
+    }
+    project_file_write.close();
+}
+};
 #endif // IDE_HPP_INCLUDED

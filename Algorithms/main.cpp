@@ -11,16 +11,33 @@
 //#include "Graphics.hpp"
 //#include "Decomposition.hpp"
 //#include "Games.hpp"
-#include "SFML.hpp"
-#include "ChatNetwork.hpp"
-#include "Games.hpp"
-#include "Library.hpp"
-#include "Files.hpp"
-#include "Editor.hpp"
-#include "SFML_Utilitary.hpp"
+//#include "SFML.hpp"
+//#include "ChatNetwork.hpp"
+//#include "Games.hpp"
+//#include "Library.hpp"
+//#include "Files.hpp"
+//#include "Editor.hpp"
+//#include "SFML_Utilitary.hpp"
+//#include "MeasureUnits.hpp"
 
-void LimitedLifetime() {
-    Editor editor;
+//#include "LabWork.hpp"
+//#include "MultiThreaded.hpp"
+//#include "Hash.hpp"
+
+//#include "Dts.hpp"
+#include "TreeDTS.hpp"
+#include "QueueDTS.hpp"
+//#include "IDE.hpp"
+
+template <typename T>
+T max(T a, T b) {
+    return b < a ? a : b;   // (*?) supposedly there is a good reason for this symmetry, which is ... ?
+}
+
+int* getExpired() {
+    struct A { int* bla; A() { bla = new int(1234); } ~A() { std::cout << "bla: " << *bla << "\n"; /* delete bla; */ }};
+    A a;
+    return a.bla;
 }
 
 int main(int argc, char** argv) {
@@ -129,9 +146,49 @@ int main(int argc, char** argv) {
 //    rpg.Run();
 
 /// TD
-    Editor editor;
+//    Editor editor;
 //    LimitedLifetime();
 //    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+/// TD
+//    ReallocatingArray<int>::DebugTest();
+//    Graph::DebugTest();
+
+/// TD
+//    SFMLMultiThreading::test1();
+
+/// TD
+//    std::cout << Utilitary::leftrotate(1234, 0) << std::endl; // works fine
+//    std::cout << Utilitary::leftrotate(1234, 1) << std::endl;
+//    std::cout << Utilitary::leftrotate(1234, 2) << std::endl;
+//    std::cout << Utilitary::leftrotate(1234, 3) << std::endl;
+
+//    uint32_t block_hashes[5] {0x01234567, 0xFEDCBA98, 0xFEDCBA98, 0x76543210, 0xF0E1D2C3};    // displays fine
+//    HashPlayground::SHA160Bit sha1 = HashPlayground::SHA160Bit(block_hashes);
+
+/// TD
+//    if(argc > 1) {
+//        std::string project {argv[1]}; std::cout << project << "\n";
+//        if(argc > 2) {
+//            IDE::AddFileToProject(project, IDE::GetFiles(true, std::string {argv[2]}));
+//    }   }   // (*?) this would be an interesting style
+
+/// TD
+//    system("PAUSE");
+
+/// TD
+//    int  i =42;
+//    std::cout << "max: " << ::max(7,i) << '\n'; // ineteresting usage of the "::", (!?) it seems to signify "use the global namespace"
+                // the "::" is likely used to explicitate the usage of the max() defined in the global state and not the one in std::
+/// TD
+//    int* a = getExpired();
+//    std::cout << "expired, but alive -> leaked:" << *a << "\n";
+//        // conslusion: (*?) there is nothing special about new-delete; they do not occur automatically at the end
+//        // of scopes; they need to be manually handled in ctor and dtor (preferably there; and in any internal
+//        // methods, which preferably do not get "exposed to the outside")
+
+/// TD
+
 }
 
 

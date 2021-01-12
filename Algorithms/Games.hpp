@@ -144,6 +144,9 @@ struct ConwayLife {
     void PropagateCellState(uint8_t row, uint8_t col) {
         SetCellState(row, col, GetCellState(row, col));
     }
+
+    /// TD
+    // this is where it's most likely to have gone wrong
     uint8_t CountAdjacency(uint8_t row, uint8_t col) {
         uint8_t result {0};
 

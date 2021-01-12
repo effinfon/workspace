@@ -26,7 +26,12 @@
         of proof about the overlap of sequences" (?); (*?) if a sequence is proven to have an infinity of primes, then
         it is useful for (!?)(?!), whereas otherwise it's just a finite sequence, so (?!)(?!)
 */
+/*  DISCUSSIONS
 
+    (*?!) I think that primality can be extended to logarithms as such: primality is so far defined for multiplication, in the case of natural numbers,
+        but multiplication between natural numbers is addition between logarithms; therefore, whatever multiplication means for logarithms, try to
+        define a sort of primality for logarithms, then translate it back to natural numbers (*?)
+*/
 
 bool IsPrime(uint64_t tested) {
     for(uint64_t checker {2}; checker * checker <= tested; checker++) {

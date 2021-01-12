@@ -43,9 +43,11 @@
 
 
 
-class Parser {}; // an abstraction for parsing strings, as a state-machine ...
-
-
+struct StringParser {}; // an abstraction for parsing strings, as a state-machine ...
+struct CFGParser {};
+struct PDAParser {};
+struct FSAParser {};
+struct RegexParser {};
 
 
 
@@ -195,4 +197,8 @@ uint64_t CountHexBytesInString(std::string string) {
     if(count % 2) std::cout << "Some hexadecimal remained unpaired.\n";
     return count / 2;
 }
+
+void SubstringSearch() {}
+void PartialSubstringMatch() {}
+
 #endif // STRINGPROCESSING_HPP_INCLUDED

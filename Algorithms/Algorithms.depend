@@ -113,12 +113,11 @@
 
 1608066367 /home/nq/codeblocks/Algorithms/CollectionTypes.hpp
 
-1610205865 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
+1611387123 source:/home/nq/codeblocks/workspace/Algorithms/main.cpp
 	<iostream>
 	<string>
 	<vector>
-	"TreeDTS.hpp"
-	"QueueDTS.hpp"
+	"GraphAlgorithms.hpp"
 
 1608066845 /home/nq/codeblocks/workspace/Algorithms/BinarySearch.hpp
 	"Search.hpp"
@@ -222,16 +221,88 @@
 	<GL/glew.h>
 	<SDL2/SDL.h>
 
-1608390489 /home/nq/codeblocks/workspace/Algorithms/RandomInputGenerator.hpp
+1610781155 /home/nq/codeblocks/workspace/Algorithms/RandomInputGenerator.hpp
 	<random>
 	<memory>
 	<iostream>
 	<bitset>
 	<GL/glew.h>
 	"Graph.hpp"
+	<random>
+	<string>
 
-1608391198 /home/nq/codeblocks/workspace/Algorithms/Graph.hpp
+1610792812 /home/nq/codeblocks/workspace/Algorithms/Graph.hpp
 	<iostream>
+	<iostream>
+	<vector>
+	<string>
+	<queue>
+	<future>
+	"AdjMatrix.h"
+	<iostream>
+	"AdjMatrix.h"
+	"GenStack.h"
+	<iostream>
+	<iostream>
+	<iostream>
+	<queue>
+	<iostream>
+	<queue>
+	<iostream>
+	<cstdlib>
+	<vector>
+	"MSTCluster.h"
+	<vector>
+	<iostream>
+	<bits/stdc++.h>
+	<iostream>
+	<vector>
+	"MSTCluster.h"
+	<iostream>
+	<stack>
+	<iostream>
+	<vector>
+	<string>
+	<list>
+	<queue>
+	<limits>
+	<utility>
+	<algorithm>
+	<iterator>
+	<cassert>
+	<random>
+	<stdexcept>
+	<vector>
+	<map>
+	<iostream>
+	<vector>
+	<map>
+	<queue>
+	"graph.cpp"
+	"graph.h"
+	<string>
+	<iostream>
+	<vector>
+	<queue>
+	<map>
+	<iostream>
+	<conio.h>
+	<math.h>
+	<vector>
+	"adjacencyMatrix.h"
+	<vector>
+	<iostream>
+	<bits/stdc++.h>
+	"Graph.h"
+	<iostream>
+	<string>
+	<vector>
+	<iostream>
+	<fstream>
+	<vector>
+	<queue>
+	"Graph.h"
+	"Graph.h"
 
 1608716357 /home/nq/codeblocks/workspace/Algorithms/OpenGL_v2.h
 	<iostream>
@@ -697,4 +768,18 @@
 	<string>
 	<cstdlib>
 	<iostream>
+
+1610999519 /home/nq/codeblocks/workspace/Algorithms/KnowledgeBase.hpp
+	<iostream>
+	<filesystem>
+	<vector>
+	<string>
+	<thread>
+
+1611052543 /home/nq/codeblocks/workspace/Algorithms/Crypto.hpp
+
+1611389097 /home/nq/codeblocks/workspace/Algorithms/GraphAlgorithms.hpp
+	<vector>
+	<random>
+	<algorithm>
 

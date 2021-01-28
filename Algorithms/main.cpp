@@ -2,6 +2,10 @@
 #include <string>
 #include <vector>
 
+//#include "KnowledgeBase.hpp"
+//#include "Crypto.hpp"
+#include "GraphAlgorithms.hpp"
+
 //#include <sys/signal.h>
 //#include <unistd.h>
 
@@ -25,20 +29,24 @@
 //#include "Hash.hpp"
 
 //#include "Dts.hpp"
-#include "TreeDTS.hpp"
-#include "QueueDTS.hpp"
+//#include "TreeDTS.hpp"
+//#include "QueueDTS.hpp"
 //#include "IDE.hpp"
-
+//#include "RandomInputGenerator.hpp"
+//#include "Graph.hpp"
+/*
 template <typename T>
 T max(T a, T b) {
     return b < a ? a : b;   // (*?) supposedly there is a good reason for this symmetry, which is ... ?
 }
 
 int* getExpired() {
-    struct A { int* bla; A() { bla = new int(1234); } ~A() { std::cout << "bla: " << *bla << "\n"; /* delete bla; */ }};
+    struct A { int* bla; A() { bla = new int(1234); } ~A() { std::cout << "bla: " << *bla << "\n"; // delete bla;
+    }};
     A a;
     return a.bla;
 }
+*/
 
 int main(int argc, char** argv) {
 // test OpenGL
@@ -188,7 +196,69 @@ int main(int argc, char** argv) {
 //        // methods, which preferably do not get "exposed to the outside")
 
 /// TD
+//    RandomData data {};
+//    std::string string {"integer64.20, unsigned32.7, byte.8, integer16.100, float64.9"};
+//    uint64_t expectedBytes = 20 * 8 + 7 * 4 + 8 * 1 + 100 * 2 + 9 * 8;
+//    void* bytes = data.ParseLanguageString_Language_v1(string);
+//
+//    printf("integer64:\n");
+//    uint64_t offsetInBytes {0};
+//    for(int i = 0; i < 20; i++) {
+//        printf("%ld ", (int64_t*)(&((uint8_t*)(bytes))[offsetInBytes])[i]);
+//    } printf("\n\n");
+//
+//    printf("unsigned32:\n");
+//    offsetInBytes += 20 * 8;
+//    for(int i = 0; i < 7; i++) {
+//        printf("%u ", (uint32_t*)(&((uint8_t*)(bytes))[offsetInBytes])[i]);
+//    } printf("\n\n");
+//
+//    printf("byte:\n");
+//    offsetInBytes += 7 * 4;
+//    for(int i = 0; i < 8; i++) {
+//        printf("%u ", (uint8_t*)(&((uint8_t*)(bytes))[offsetInBytes])[i]);
+//    } printf("\n\n");
+//
+//    printf("integer16:\n");
+//    offsetInBytes += 8 * 1;
+//    for(int i = 0; i < 100; i++) {
+//        printf("%d ", (int16_t*)(&((uint8_t*)(bytes))[offsetInBytes])[i]);
+//    } printf("\n\n");
+//
+//    printf("float64:\n");
+//    offsetInBytes += 100 * 2;
+//    for(int i = 0; i < 9; i++) {
+//        printf("%lf ", (double*)(&((uint8_t*)(bytes))[offsetInBytes])[i]);
+//    } printf("\n\n");
 
+/// TD
+//    Filter(GetAllFiles("/home/nq/"));
+
+/// TD
+//    Solve(3, 11, 7, 5);
+//    printf("\n");
+//    Solve(5, 11, 3, 9);
+//    printf("\n");
+//    Solve(7, 11, 17, 8);
+//    printf("\n");
+//    Solve(11, 13, 11, 7);
+//    printf("\n");
+//    Solve(17, 31, 7, 2);
+//    printf("\n");
+
+/// TD
+    GraphAlgo::Graph_Conn conn;
+    conn.AddEdge(-2, 3);
+    conn.AddEdge(-2, 4);
+    conn.AddEdge(-2, 2);
+    conn.AddEdge(-2, 1);
+    conn.AddEdge(-2, 0);
+    conn.AddEdge(-1, 2);
+    conn.AddEdge(-1, -3);
+    conn.AddEdge(-1, 3);
+    for(auto iter : conn.edges) {
+        std::cout << iter.first << " " << iter.second << "\n";
+    }
 }
 
 

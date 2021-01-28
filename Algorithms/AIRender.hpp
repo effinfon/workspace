@@ -21,5 +21,15 @@
             in its search) by writting code itself; the code being written is in the language being used for the search space, for example it could be C++ or even Java, or C, or Haskell,
             or Python, or Lisp, etc.
 */
+/*
+    animations: @~ 2:13 https://www.youtube.com/watch?v=DX92f8CrjrE
+        this suggests that every character / body needs to have the same framework in the basis of which movement occurs, and thus the hero character does not get to
+            have better animations than all the other characters; imagine that an intelligent AI (maybe even more intelligent than the hero player) is behind those
+            other characters
+    integration: @~ 3:00 https://www.youtube.com/watch?v=DX92f8CrjrE
+        the game speed controls the audio rendition, as well as the "frame-physics" (it controls everything, basically; albeit, the frame rate is the same, as that
+        is a separate control parameter)
+
+*/
 
 #endif // AIRENDER_HPP_INCLUDED

@@ -1,6 +1,8 @@
 #ifndef RANDOMGENERATOR_HPP_INCLUDED
 #define RANDOMGENERATOR_HPP_INCLUDED
 
+#include <random>
+
 /// TD
 /*
     the "randomness" of these generators is in their dynamics; as such, if the system gets restarted every time the program instantiates,
@@ -14,6 +16,7 @@
 
     // (*?) how to set its internal state though (?); I cannot read / write the generator's
         // state fromto a file if the internal state is unaccessable
-static std::mt19937 rand;
+
+// static std::mt19937 rand;
 
 #endif // RANDOMGENERATOR_HPP_INCLUDED

@@ -2,17 +2,32 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="Encodings.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="AIRender.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1292" topLine="0" />
+			<Cursor1 position="3114" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="FileLoaderBMP.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="537" topLine="12" />
+			<Cursor1 position="8386" topLine="226" />
 		</Cursor>
 	</File>
-	<File name="QueueDTS.hpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="ControlStructures.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="397" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Crypto.hpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4728" topLine="95" />
+		</Cursor>
+	</File>
+	<File name="Assets.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="QueueDTS.hpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="193" topLine="39" />
 		</Cursor>
@@ -27,22 +42,61 @@
 			<Collapse line="1456" />
 		</Folding>
 	</File>
-	<File name="AIRender.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="LanguageCharacteristicsAndImplementations.hpp" open="0" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="Graph.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Graph.hpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="-2" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2440" topLine="18" />
+			<Cursor1 position="21641" topLine="18" />
+		</Cursor>
+		<Folding>
+			<Collapse line="41" />
+			<Collapse line="125" />
+			<Collapse line="376" />
+			<Collapse line="1206" />
+			<Collapse line="1766" />
+			<Collapse line="2015" />
+			<Collapse line="2087" />
+			<Collapse line="2291" />
+			<Collapse line="2436" />
+			<Collapse line="2962" />
+			<Collapse line="4062" />
+			<Collapse line="4151" />
+			<Collapse line="4310" />
+			<Collapse line="4738" />
+			<Collapse line="4964" />
+			<Collapse line="5059" />
+			<Collapse line="5236" />
+			<Collapse line="5341" />
+			<Collapse line="5380" />
+			<Collapse line="5439" />
+			<Collapse line="5481" />
+			<Collapse line="5754" />
+		</Folding>
+	</File>
+	<File name="RandomGenerator.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1018" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="LinkedList.hpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="OptimizationProblems.hpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="TreeDTS.hpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="GraphAlgorithms.hpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="5418" topLine="68" />
+		</Cursor>
+	</File>
+	<File name="NumberTheory.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TreeDTS.hpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="85" topLine="0" />
 		</Cursor>
@@ -56,36 +110,62 @@
 			<Collapse line="1498" />
 		</Folding>
 	</File>
-	<File name="Games.hpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8091" topLine="130" />
-		</Cursor>
-	</File>
 	<File name="Animation.hpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="main.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="793" topLine="18" />
-		</Cursor>
-		<Folding>
-			<Collapse line="32" />
-			<Collapse line="36" />
-		</Folding>
 	</File>
 	<File name="triangle.cpp" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="6123" topLine="134" />
 		</Cursor>
 	</File>
-	<File name="CharacterSet.hpp" open="1" top="1" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="BinarySearch.hpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Language.hpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2054" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="LinkedList.hpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="CharacterSet.hpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1105" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="NumberTheory.cpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="Encodings.hpp" open="0" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1515" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="FileLoaderBMP.cpp" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="537" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="Editor.hpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="12108" topLine="129" />
+		</Cursor>
+	</File>
+	<File name="RandomInputGenerator.hpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="10502" topLine="246" />
+		</Cursor>
+	</File>
+	<File name="FileIO.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="217" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Linearity.hpp" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
@@ -95,7 +175,28 @@
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="IDE.hpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="Games.hpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8091" topLine="130" />
+		</Cursor>
+	</File>
+	<File name="LabWork.hpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2563" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="59" />
+			<Collapse line="67" />
+			<Collapse line="73" />
+			<Collapse line="124" />
+			<Collapse line="339" />
+			<Collapse line="344" />
+			<Collapse line="350" />
+			<Collapse line="368" />
+			<Collapse line="385" />
+		</Folding>
+	</File>
+	<File name="IDE.hpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="9018" topLine="82" />
 		</Cursor>
@@ -104,9 +205,9 @@
 			<Collapse line="103" />
 		</Folding>
 	</File>
-	<File name="Assets.cpp" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="KnowledgeBase.hpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="0" />
+			<Cursor1 position="1833" topLine="5" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

@@ -21,5 +21,10 @@
         remembering it are those who should think of it as "startian" instead, because they're thinking of the address
 
 */
+/*
+    (*?) "variable length codes" and "static codes"
+    (*?) "type encoding permutations" and "specifying an encoding by a search-space, which can be optimization-searched"
+        finding the "fittest permutation"
 
+*/
 #endif // ENCODINGS_HPP_INCLUDED

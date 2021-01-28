@@ -112,6 +112,105 @@ namespace fs = std::filesystem;
         <e.g.> if you are at the end of a row, pressing Down will take you to the beginning of the next row and pressing Right will take you to the end of the next row
     (*!?) the ability to integrate bug / error reports into the project (and their solutioning); it should be able to include before->after source code - project wide diff actually !,
         the option to create / open, to close, and to re-open, ?? etc.
+    delete current row, cut / copy current row, etc. current row
+    (smart) (aligned) duplicate of snippet
+    search: find in files the pattern ..., find file(s) with pattern ... (and then jump in it / them at pattern ...)
+    :w for saving, or Ctrl + S (also, autosaving for "safety")
+    create another window (even another file)
+    cut the currently selected "??" (this can vary, it could be word, but it could be sentence or scope or etc.) to the right or to the left of the cursor
+    turn the currently selected of parentheses into another kind (I often have to change a pair of "()" into "[]", when taking notes)
+    (*!?) some of the controls in mousepad are to my liking (such as how the cursor moves in certain actions); of course, I don't like all of it
+        // copying and the non-automatic indentation; on the contrary, if when copy-pasting the indentation were auto-adjusting / smart, then the way
+            codeblocks handles auto-indentation when getting a newline is actually preferable
+    when having multiple rows selected, at the cursor has some arbitrary position in the first row, there should be a combo that signifies "go up a row
+        and to the end of it" (basically, if you are "terminally" / "distally" on row[5], somewhere along its middle maybe, press the combo to go, with the
+        selection, to the end of row[4]); I often have to delete comments that I append to rows and find the need to do this; another way would be to just
+        position at the beginning of the comment and "delete everything towards row's end" (and its symmetric, "{everything} towards row's beginning")
+    (?) when using tab, automatically indent to the previous row's indentation ?; the problem with this is that it will not always be desirable to indent that much,
+        or that the current row's indentation is desired to be at a different point
+    (*?) do not create "<>" if < is used as a comparator, in the context
+    (*?) do not duplicate " into "" when it is (immediately) followed by text, because it usually happens that I need to ~ "en-quote" something when this happens;
+        otherwise, offer a mechanism that en-quotes the selector
+    (*?) I'd sometimes like if I could see the ends of a pair of brackets "{}"; for example, the IDE could dynamically zoom out (as much as necessary) when the
+        other end of the pair is not inside the viewport; and also somehow highlight them (similarly to how Code::Block currently does; Atom only underscores them,
+        but that's not exactly visible enough, to me
+    (*?) there is a more complicated problem regarding the profiles for "what constitutes a word", because there are places where a "jump" occurs over whatever
+        ammount of string is considered to be part of a "word"; so, '_' and digits and latin letters could be considered as being part of the profile for a "word",
+        or it could be a different composition
+    (*?) the "comment in / out the lines included in the selection" is very useful
+    (*?) maybe a mechanism similar to text boxes for when writting comments; why ? because my comments tend to get long and they run out of the page's / screen's
+        width and that implies manual work on my part to arrange it in visible rows and to comment each row
+    comments, notes, todo lists, idea maps, etc., they all need to be linked by some sort of graph dts that implements a ~ semantic analysis; basically, when I write
+        notes in Google Notes (sadly), often the chosen title doesn't fit well all the notes in the note, because there is often deviation (which can also stem from
+        a subject related to the title, but it gets inter-disciplinary quickly and the title alone becomes a bad fit); but a graph visualization algorithm could
+        automate the ~ "clustering" and even do away with the need for notes' titles (?!)
+    (*?) when moving one end of a pair of parentheses, move the other as well (~ "matching indentation"); this could be further generalized to all the statements in
+        an "indented scope" as well (but is it desirable ?)
+    (*?) maybe a mechanism for "delete everything inside current scope / clear current scope"
+    (*?) a very useful thing I saw @~30:04 https://www.youtube.com/watch?v=h4RkCyJyXmM
+        it was a ~ "search (across files)" coupled with hotkeys for "next()" and "prev()" (preferably as a cyclic list)
+        also, it could have instead taken a regex as the pattern (the speaker needed to modify all occurences where "sort" is preceded by a letter into "Sort")
+        or one could also specify the regex pattern and the substitution for it and couple it with ~ "apply and go next / prev", "skip to next / prev"
+    (*?) offer the rendering option to wrap the lines into multiple rows if they exceed a column number (or the visible part of viewport)
+    (*?) some mechanism for ~ "in-expression comments", for example when explaining at each step of an expression why the formula is the way it is (overlay / tooltips,
+        even images and videos, manual-style pages, etc.)
+    (*?)
+    ...
+*/
+/*  TYPE SYSTEM, TRAITS
+
+    (*?) traits -> for one, these traits seem to have a ~ "definition" (for example the dts specification, or ... ?); then there is the "implementation" of the trait,
+        which is effectively a sort of function which gets called [but a question would be in what "context" does a "trait function" get called in ? also, what function\
+        verifies the correctness of the program ?]; now, a "trait" might have a sort of "algebraic abstract definition" (which could be lazily evaluated) (!?)[but actually,
+        I would be curious if this actually constitutes a very large search-space, because then that would imply the need for a knowledge-base network; well, that too
+        actually gives birth to serious possible problems of security, such as "lies" and "counterfeiting proofs", etc.]; either way, the point is that I also want a way
+        to automate the verification of the correctness of the implementation, according to the trait's abstract property definition / specification (?!)
+    (*?!) operations between types, such as comparison, could be defined in terms of the abstract data types' specifications, and from there to generalize to all particular
+        ~ "machine types" that could actually get automatically chosen / optimized for by the compiler (?!)
+        // (*?) the operations would be translated from abstract into machine-specific based on the "target" specified for compilation (further progress could be made by
+            also somehow specifying the target machine in a way that exposes to the compiler how to map from abstractions to machine language
+*/
+/*  AUTOCOMPLETION FEATURES
+
+    help with auto-pairing (/ ~ auto-closing) parentheses or to iterate through them in the editor
+    (*?!) multi-column autocomplete (!?) -> inspired from @~ 2:00 https://www.youtube.com/watch?v=DX92f8CrjrE
+*/
+/*  PROGRAMMING
+
+   (*!?) get a view of "what's possible in a given context"; for example, tehre's always the problem of having to learn some arbitrary API, or to learn the names of things in an API,
+        but that is boring and not a very productive thing; the most relevant thing about an API is its design, its structure, whether it's single-threaded or multi-threaded,
+        whether it's a correct program, how performant it is, whether it adapts, whether it adds new dependencies, etc.
+    therefore, an important chore I want to have be done away with is "API learning", "API automating" (having to link some code to an API is a chore)
+    (*!?) versioning of functions (!!?), support from the editor; preferably, also develop a theory about functions pertaining to this, maybe also a dts ~ git for codebases (?!)
+    (*?!) debugging strings [but the editor needs to have support for them, to easily add them in and take them out, to selectively enable  / disable them, probably with checkboxes
+        for each function / struct / scope (so at different levels of hierarchy); also, there should be some mechanism for ~ "introspection debugging", where the programmer doesn't
+        have to write a manual printf() anymore, but instead is generated automatically for different profiles <e.g.> "introspect (all) local variables", "deep introspect all local
+        variables (and structs)", "static (and local) introspect" (so one can see the context of the state-machine when a scope executes), "register introspection", "struct introspection
+        in method functions", etc.]
+    (*!?) refactorization is critical: I had great trouble in trying to revise two versions of a function, at the same time; as I was trying to pin down the correct formula, I would
+        keep getting bugs due to either modifying in the wrong place, or not modifying in all required places, or forgetting the change or names from a scope to another, etc.
+    (*!?) visualize recursive algorithms's stacks
+    (*?) visualize as an inductive definition of a recursive function is turned into an iterative form / definition
+    (*?!) visualize ownership [statically and dynamically -> thus, the ownership status can be evaluated and visualized in-code, at some point in some function; it could also
+        be evaluated at run-time / during execution (~ debugging), to understand why some error occurs]
+        // (*!?) if the type system throws an error due to a certain proof that the syntax produces a point that is outside the allowed control / space / sub-set of the language,
+            as is based on the guarantees the type checker needs to prove, then what is different between when a human programmer still programs something in the "unsafe sub-space"
+            and the program still "works fine" (?!); essentially, what is the difference between the type system and the programmer when it comes to safe vs unsafe and knowing when
+            it's "safe to program in the unsafe" (?!); I'd assume it has to do with the "knowledge space" that each "prover" has, a sort of "general, inter-disciplinary knowledge"
+            that the programmer has and the type system currently doesn't; besides, the safe programs are themselves not guaranteed to always work (because there are "unconsidered
+            lower abstractions"), and the same goes for unsafe programs [which on the other hand, have "known cases of (guaranteed) incorrectness"]; then it becomes a problem
+            of control to "handle" / "adapt to" the cases for which the program is unsafe (~ guaranteed / known to behave incorrectly), by trying to control / actuate / feed-back
+            those variables / parameters in dynamics space that will lead to that state; now, there is an additional consideration here, that the unsafe program is used with the intent
+            that, under correct control, the program will only receive the intended input domain for which it is designed to be correct, but not any other (unexpected) input, and
+            it is the responsibility of the control to ensure this; in the dynamics space, though, the control system can still fail to ensure the input domain for which correctness
+            is specified / guaranteed / ensured, so in that way unsafe and even safe programs can still fail
+    (*?) a syntax that is focused on whether something is a side-effect or not, whether something is ~ "derived from" (such as when applying / chaining those dot operators and
+        using the "member methods" to create a ~ "copy" / "derived copy" of the original and apply all kinds of filters and properties and functions on it to get the resired
+        ~ "derived output") [so in essence these two thigns bother me: side-effects and ~ "derived, processed `copies`" / "in-dependent and out-independent variables"]; "in-dependent"
+        is meant to signify the concurrency dependency (as to when a separate copy is made for further processing) and "out-dependent" is meant to signify that after that copy is done,
+        the processing is independent of the original (so from that point on they can be parallelized
+    (*?) "extension trait" and "expanding classes that have already been defined" -> can't this be done better (?!)
+
     ...
 */
 /*  EVENTS
@@ -163,7 +262,7 @@ namespace fs = std::filesystem;
         condition, because the condition is one of the conditions inside the switch case (*?) [I think that essentially this would be the munade work I'd have to
         otherwise do; the other option is that I'd have to write in each if() statement's body the post-effect, after the corresponding "action"]
 */
-/*  GEPHI
+/*  GEPHI, a paper
 
     Gephi is an open source software for graph and networkanalysis.   It  uses  a  3D  render  engine  to  display  largenetworks in real-time and to speed up the exploration.A flexible and multi-task architecture brings new pos-sibilities to work with complex data sets and producevaluable visual results. We present several key featuresof Gephi in the context of interactive exploration andinterpretation of networks.  It provides easy and broadaccess to network data and allows for spatializing, fil-tering, navigating, manipulating and clustering. Finally,by presenting dynamic features of Gephi, we highlightkey aspects of dynamic network visualization
     In  the  aim  of  understanding  networks,  the  visualizationof  large  graphs  has  been  developed  for  many  years  inmany  successful  projects  (Batagelj  1998;  Shannon  2003;Adar 2006). Visualizations are useful to leverage the percep-tual abilities of humans to find features in network structureand data.   However this process is inherently difficult andrequires exploration strategy (Perer 2006). As well as beingtechnically accurate and visually attractive, network explo-ration tools must head toward real-time visualizations andanalysis  to  improve  the  user’s  exploratory  process.   Inter-active techniques have successfully guided domain expertsthrough the complex exploration of large networks.We can identify some main requirements for a networkexploration tool:  high quality layout algorithms, data filter-ing,  clustering,  statistics and annotation.
@@ -184,6 +283,63 @@ namespace fs = std::filesystem;
      Gephihas  been  successfully  used  for  Internet  link  and  semanticnetwork  case  studies.   It  is  also  frequently  used  for  SNA.An effort has been made to speed up the analysis process,from data import to map export. Gephi is developed towardsupporting the whole process with only user interface ma-nipulation.  The developement of dynamic features are alsoone of the top priorities.
 
 */
+/*  COMMENTS IN CODE, NOTES, EXPLANATIONS, etc.
+    nested comment blocks
+    "first-encounter" if(){} - else{} coupling / pairing
+    the first statement after a control structure does not require explicit "{}"
+    use delimiters for explicitating / specifying / representing scope; I don't think using space and indentation would work better;
+        (*?!) besides, it doesn't seem like indentation-only serves as a good styling in all cases; more mechanisms are needed for
+            making code more readable
+    (*?) "minimal syntax, source code" and separation of the "coding source-code" vs "non-coding source-code";
+        if there is "specification source-code" or "comment source-code", than those should go to "separate files / parts" than the
+        "coding source-code" ("separate parts / files" from the POV of transmitting the information across a network, as quickly as possible,
+        such as the problem of loading a page in under 1 sec, or 100 msec)
+*/
+/*  FILE HANDLING
+    dynamically adapt to a file being moved to another destination, or to the file being open in another process and being modified, etc.; still,
+        keep a private history open for the file, because it might have been modified unintentionally by other processes and could still be
+        recovered from the editor
+*/
+/*  MODELS, INSPIRATION (text editors, IDEs, debuggers, compilers, proof assistants, toolsets, etc.)
+    Mousepad
+    Emacs, Vim
+    Atom
+    VS Code, VS Studio
+    Light Table
+    Gephi
+    Code::Blocks
+    Coq
+    GDB, Qira
+    ...
+*/
+/*  KNOWLEDGE BASE, a SEARCH ENGINE, an AI ASSISTANT, an ERROR HELPER (integrated with the compiler's type system)
+    error helper
+    API assistant, auto-complete assistant, boilerplate code assistant (actually, the language should be thus that such code does not get to be written, but generated)
+        // (*!?) essentially, what IS "booilerplate code" (?); by way of increasing abstraction, is it natural for boilerplate code to emerge (?)
+        // can templates help ? do they need to be ~ "context-aware templates" ?
+    correctness assistant
+    ...
+*/
+/*  DEBUGGING
+
+    (*?!) what is debugging essentially about ? to be it seems to be in some part about being able to "visualize the program, as it executes"; on another hand,
+        it is also about "verifying correctness" and "confirming that the code matches the `intent` / `specification`"; on another hand, there's also a more
+        ~ "catchy" sort of debugging, when testing the "logic" of the program [now, how does one automate this ? and before that, how does one even define the
+        concept of "the logic of your program is wrong" (?!)]
+        // thus, whether it be about evaluating the machine code step by step in parallel with the source code (~ "evaluating translation"), or "verifying the
+            in-memory value of some variable(s)", "profiling resource usage", "profiling the control flow, single- and multi- threaded", etc., these are all
+            just ~ "visualizers", each for some aspect / abstraction used to analyze / understand / "see" the program in execution, to visualize its runtime trajectories
+            and complexity space / dynamics space
+        * backtrace, stack trace, call trace, etc. [essentially, all kinds of "traces"; but what kinds of computations do leave "traces"; reversible ones do not.
+            at least not after they have reversed, but when any process of computation is being ~ "expanded", that is a trace in itself; traces exist at points in
+            time, they appear and disappear, they reverse or get overwritten, etc. (*?)]
+*/
+/*  ALGORITHMIC TESTING and VERIFICATION (of CORRECTNESS, SORT-PROPERTIES, etc.) and "SUB-SPACES of EFFICIENCY" (the kind of input for which a particular algorithm is much more efficient than others)
+
+    sorting algorithms visualization: number of swaps, number of comparisions, stack call depth, parallelizability, best-average-worst spatio-temporal complexities
+*/
+
+namespace _v1 {
 
 struct Editor {
     struct TextBox {
@@ -407,4 +563,5 @@ struct Editor_MultiThreaded {
     }
 };
 
+};
 #endif // EDITOR_HPP_INCLUDED

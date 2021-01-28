@@ -12,8 +12,9 @@ namespace fs = std::filesystem;
 
 /// TD
 /*
-    read double sequence
+
 */
+
 
 struct DoubleSequence {
     std::string filepathname {};
